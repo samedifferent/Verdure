@@ -1,0 +1,64 @@
+{
+  "variants": [
+    {
+      "model": "ventureonwards:block/rock1",
+      "y": 270
+    },
+    {
+      "model": "ventureonwards:block/rock1",
+      "y": 180
+    },
+    {
+      "model": "ventureonwards:block/rock1"
+    },
+    {
+      "model": "ventureonwards:block/rock1",
+      "y": 90
+    },
+    {
+      "model": "ventureonwards:block/rock2",
+      "y": 270
+    },
+    {
+      "model": "ventureonwards:block/rock2",
+      "y": 180
+    },
+    {
+      "model": "ventureonwards:block/rock2"
+    },
+    {
+      "model": "ventureonwards:block/rock2",
+      "y": 90
+    },
+    {
+      "model": "ventureonwards:block/rock3",
+      "y": 270
+    },
+    {
+      "model": "ventureonwards:block/rock3",
+      "y": 180
+    },
+    {
+      "model": "ventureonwards:block/rock3"
+    },
+    {
+      "model": "ventureonwards:block/rock3",
+      "y": 90
+    },
+    {
+      "model": "ventureonwards:block/rock4",
+      "y": 270
+    },
+    {
+      "model": "ventureonwards:block/rock4",
+      "y": 180
+    },
+    {
+      "model": "ventureonwards:block/rock4"
+    },
+    {
+      "model": "ventureonwards:block/rock4",
+      "y": 90
+    }
+  ]
+}

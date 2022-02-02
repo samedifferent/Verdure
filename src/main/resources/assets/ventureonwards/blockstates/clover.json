@@ -1,0 +1,19 @@
+{
+  "variants": [
+    {
+      "model": "ventureonwards:block/clover",
+      "y": 270
+    },
+    {
+      "model": "ventureonwards:block/clover",
+      "y": 180
+    },
+    {
+      "model": "ventureonwards:block/clover"
+    },
+    {
+      "model": "ventureonwards:block/clover",
+      "y": 90
+    }
+  ]
+}
