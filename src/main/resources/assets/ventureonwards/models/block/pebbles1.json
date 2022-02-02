@@ -1,7 +1,7 @@
 {
-	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "ventureonwards:block/pebbles1"
+		"0": "ventureonwards:block/pebbles1",
+		"particle": "ventureonwards:block/pebbles1"
 	},
 	"elements": [
 		{

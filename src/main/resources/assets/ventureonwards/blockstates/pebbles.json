@@ -1,49 +1,51 @@
 {
-  "variants": [
-    {
-      "model": "ventureonwards:block/pebbles1",
-      "y": 270
-    },
-    {
-      "model": "ventureonwards:block/pebbles1",
-      "y": 180
-    },
-    {
-      "model": "ventureonwards:block/pebbles1"
-    },
-    {
-      "model": "ventureonwards:block/pebbles1",
-      "y": 90
-    },
-    {
-      "model": "ventureonwards:block/pebbles2",
-      "y": 270
-    },
-    {
-      "model": "ventureonwards:block/pebbles2",
-      "y": 180
-    },
-    {
-      "model": "ventureonwards:block/pebbles2"
-    },
-    {
-      "model": "ventureonwards:block/pebbles2",
-      "y": 90
-    },
-    {
-      "model": "ventureonwards:block/pebbles3",
-      "y": 270
-    },
-    {
-      "model": "ventureonwards:block/pebbles3",
-      "y": 180
-    },
-    {
-      "model": "ventureonwards:block/pebbles3"
-    },
-    {
-      "model": "ventureonwards:block/pebbles3",
-      "y": 90
-    }
-  ]
+  "variants": {
+    "": [
+      {
+        "model": "ventureonwards:block/pebbles1",
+        "y": 270
+      },
+      {
+        "model": "ventureonwards:block/pebbles1",
+        "y": 180
+      },
+      {
+        "model": "ventureonwards:block/pebbles1"
+      },
+      {
+        "model": "ventureonwards:block/pebbles1",
+        "y": 90
+      },
+      {
+        "model": "ventureonwards:block/pebbles2",
+        "y": 270
+      },
+      {
+        "model": "ventureonwards:block/pebbles2",
+        "y": 180
+      },
+      {
+        "model": "ventureonwards:block/pebbles2"
+      },
+      {
+        "model": "ventureonwards:block/pebbles2",
+        "y": 90
+      },
+      {
+        "model": "ventureonwards:block/pebbles3",
+        "y": 270
+      },
+      {
+        "model": "ventureonwards:block/pebbles3",
+        "y": 180
+      },
+      {
+        "model": "ventureonwards:block/pebbles3"
+      },
+      {
+        "model": "ventureonwards:block/pebbles3",
+        "y": 90
+      }
+    ]
+  }
 }
