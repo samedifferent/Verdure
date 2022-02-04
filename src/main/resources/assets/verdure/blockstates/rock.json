@@ -1,0 +1,66 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "verdure:block/rock1",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/rock1",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/rock1"
+      },
+      {
+        "model": "verdure:block/rock1",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/rock2",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/rock2",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/rock2"
+      },
+      {
+        "model": "verdure:block/rock2",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/rock3",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/rock3",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/rock3"
+      },
+      {
+        "model": "verdure:block/rock3",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/rock4",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/rock4",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/rock4"
+      },
+      {
+        "model": "verdure:block/rock4",
+        "y": 90
+      }
+    ]
+  }
+}

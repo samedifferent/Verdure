@@ -1,0 +1,6 @@
+{
+  "parent": "verdure:block/shelf_mushroom",
+  "textures": {
+    "shelf_mushroom": "verdure:block/red_mushroom_side1"
+  }
+}

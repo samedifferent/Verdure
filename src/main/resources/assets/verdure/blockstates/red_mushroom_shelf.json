@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "verdure:block/red_mushroom_shelf1",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "verdure:block/red_mushroom_shelf"
+    },
+    "facing=south": {
+      "model": "verdure:block/red_mushroom_shelf",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "verdure:block/red_mushroom_shelf1",
+      "y": 270
+    }
+  }
+}

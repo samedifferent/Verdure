@@ -1,0 +1,21 @@
+package samebutdifferent.verdure.event;
+
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import samebutdifferent.verdure.Verdure;
+import samebutdifferent.verdure.registry.VerdureBlocks;
+
+@Mod.EventBusSubscriber(modid = Verdure.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class ClientEventHandler {
+
+    @SubscribeEvent
+    public static void init(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.CLOVER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.BROWN_MUSHROOM_SHELF.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.RED_MUSHROOM_SHELF.get(), RenderType.cutout());
+    }
+}

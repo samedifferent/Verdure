@@ -1,6 +1,0 @@
-{
-  "parent": "ventureonwards:block/shelf_mushroom",
-  "textures": {
-    "shelf_mushroom": "ventureonwards:block/red_mushroom_side"
-  }
-}
