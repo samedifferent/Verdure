@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import samebutdifferent.ventureonwards.VentureOnwards;
 
-public class ModPlacedFeatures {
+public class VOPlacedFeatures {
 
 
 

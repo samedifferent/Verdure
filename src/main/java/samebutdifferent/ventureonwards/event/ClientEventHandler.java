@@ -15,5 +15,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(VOBlocks.CLOVER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VOBlocks.BROWN_MUSHROOM_SHELF.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VOBlocks.RED_MUSHROOM_SHELF.get(), RenderType.cutout());
     }
 }

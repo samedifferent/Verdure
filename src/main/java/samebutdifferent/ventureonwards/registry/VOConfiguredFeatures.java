@@ -7,7 +7,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import samebutdifferent.ventureonwards.VentureOnwards;
 
-public class ModConfiguredFeatures {
+public class VOConfiguredFeatures {
 
 
 
