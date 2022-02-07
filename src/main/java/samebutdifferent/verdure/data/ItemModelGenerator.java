@@ -16,9 +16,6 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        ofBlock(VerdureBlocks.SMOOTH_DIRT);
-        ofBlock(VerdureBlocks.DRIED_MUD);
-        blockToItemGenerated(VerdureBlocks.DAISIES);
     }
 
     private void ofBlock(RegistryObject block) {

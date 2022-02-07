@@ -14,8 +14,6 @@ public class BlockstateGenerator extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(VerdureBlocks.DRIED_MUD.get());
-        simpleBlock(VerdureBlocks.SMOOTH_DIRT.get());
     }
 
     private void crossModel(Block plant) {

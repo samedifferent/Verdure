@@ -19,7 +19,7 @@ public class Verdure {
     public static final CreativeModeTab TAB = new CreativeModeTab(MOD_ID) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.OAK_LEAVES);
+            return new ItemStack(VerdureBlocks.CLOVER.get().asItem());
         }
     };
 
