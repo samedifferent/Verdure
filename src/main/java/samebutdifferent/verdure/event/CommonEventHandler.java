@@ -1,16 +1,24 @@
 package samebutdifferent.verdure.event;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import samebutdifferent.verdure.Verdure;
@@ -59,12 +67,34 @@ public class CommonEventHandler {
 
     @SubscribeEvent
     public static void onPlace(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getHitVec().getDirection().getAxis().getPlane() == Direction.Plane.HORIZONTAL && event.getItemStack().is(Items.BROWN_MUSHROOM)) {
-            event.setCanceled(true);
-            event.getEntity().level.setBlockAndUpdate(event.getPos(), VerdureBlocks.BROWN_MUSHROOM_SHELF.get().getStateForPlacement(new BlockPlaceContext(event.getPlayer(), event.getHand(), new ItemStack(VerdureBlocks.BROWN_MUSHROOM_SHELF.get()), event.getHitVec())));
-        } else if (event.getHitVec().getDirection().getAxis().getPlane() == Direction.Plane.HORIZONTAL && event.getItemStack().is(Items.RED_MUSHROOM)) {
-            event.setCanceled(true);
-            event.getEntity().level.setBlockAndUpdate(event.getPos(), VerdureBlocks.RED_MUSHROOM_SHELF.get().getStateForPlacement(new BlockPlaceContext(event.getPlayer(), event.getHand(), new ItemStack(VerdureBlocks.RED_MUSHROOM_SHELF.get()), event.getHitVec())));
+        Player player = event.getPlayer();
+        Level level = player.level;
+        ItemStack stack = event.getItemStack();
+        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) && event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
+            BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
+            if (stack.is(Items.BROWN_MUSHROOM)) {
+                placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
+            } else if (stack.is(Items.RED_MUSHROOM)) {
+                placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+            }
         }
     }
+
+    private static void placeMushroomShelf(PlayerInteractEvent.RightClickBlock event, Player player, Level level, BlockPos pos, ItemStack stack, Block mushroomShelf) {
+        BlockState state = mushroomShelf.getStateForPlacement(new BlockPlaceContext(player, event.getHand(), stack, event.getHitVec()));
+        level.setBlockAndUpdate(pos, state);
+        player.swing(event.getHand());
+        mushroomShelf.defaultBlockState().getBlock().setPlacedBy(level, pos, state, player, stack);
+        if (player instanceof ServerPlayer) {
+            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
+        }
+        level.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
+        SoundType soundtype = state.getSoundType(level, pos, player);
+        level.playSound(player, pos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+        if (!player.getAbilities().instabuild) {
+            stack.shrink(1);
+        }
+    }
+
+
 }
