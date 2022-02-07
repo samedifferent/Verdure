@@ -2,11 +2,14 @@ package samebutdifferent.verdure.registry;
 
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.placement.*;
 import samebutdifferent.verdure.Verdure;
 
@@ -21,6 +24,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(VegetationPlacements.worldSurfaceSquaredWithCount(2));
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
+    public static final PlacedFeature DAISIES = VerdureConfiguredFeatures.DAISIES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
 
     public static PlacedFeature registerPlacedFeature(String pKey, PlacedFeature pPlacedFeature) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pPlacedFeature);
@@ -36,5 +40,6 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("patch_clover", PATCH_CLOVER);
         registerPlacedFeature("patch_pebbles", PATCH_PEBBLES);
         registerPlacedFeature("patch_rock", PATCH_ROCK);
+        registerPlacedFeature("daisies", DAISIES);
     }
 }

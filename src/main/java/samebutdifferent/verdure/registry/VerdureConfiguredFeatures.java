@@ -4,14 +4,20 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import samebutdifferent.verdure.Verdure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VerdureConfiguredFeatures {
@@ -25,6 +31,7 @@ public class VerdureConfiguredFeatures {
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_CLOVER = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(32, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.CLOVER.get()))).onlyWhenEmpty()));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_PEBBLES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(10, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get()))).onlyWhenEmpty()));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ROCK = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(10, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get()))).onlyWhenEmpty()));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> DAISIES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(8, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.DAISIES.get().defaultBlockState(), 1).add(VerdureBlocks.BLUE_DAISIES.get().defaultBlockState(), 1).add(VerdureBlocks.PINK_DAISIES.get().defaultBlockState(), 1).build()))).onlyWhenEmpty()));
 
     public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> registerConfiguredFeature(String pKey, ConfiguredFeature<FC, ?> pConfiguredFeature) {
         return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pConfiguredFeature);
@@ -40,5 +47,6 @@ public class VerdureConfiguredFeatures {
         registerConfiguredFeature("patch_clover", PATCH_CLOVER);
         registerConfiguredFeature("patch_pebbles", PATCH_PEBBLES);
         registerConfiguredFeature("patch_rock", PATCH_ROCK);
+        registerConfiguredFeature("daisies", DAISIES);
     }
 }
