@@ -4,6 +4,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -25,8 +26,11 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> SMOOTH_DIRT = registerBlock("smooth_dirt", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
     public static final RegistryObject<Block> BROWN_MUSHROOM_SHELF = registerBlock("brown_mushroom_shelf", () -> new MushroomShelfBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((state) -> 1)));
     public static final RegistryObject<Block> RED_MUSHROOM_SHELF = registerBlock("red_mushroom_shelf", () -> new MushroomShelfBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_RED).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> DAISY = registerBlock("daisy", () -> new DaisyBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> DRIED_MUD = registerBlock("dired_mud", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)));
+    public static final RegistryObject<Block> DAISIES = registerBlock("daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> BLUE_DAISIES = registerBlock("blue_daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
+    public static final RegistryObject<Block> PINK_DAISIES = registerBlock("pink_daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
+    public static final RegistryObject<Block> DRIED_MUD = registerBlock("dried_mud", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)));
+    public static final RegistryObject<Block> QUICKSAND = registerBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.of(new Material.Builder(MaterialColor.SAND).replaceable().nonSolid().noCollider().build()).strength(0.25F).sound(SoundType.SAND).dynamicShape()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = VerdureBlocks.BLOCKS.register(name, block);

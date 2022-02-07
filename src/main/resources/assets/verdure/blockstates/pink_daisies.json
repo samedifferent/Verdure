@@ -5,7 +5,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "x": 270,
         "uvlock": true
       }
@@ -20,7 +20,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "x": 270,
         "uvlock": true
       }
@@ -30,7 +30,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy"
+        "model": "verdure:block/pink_daisies"
       }
     },
     {
@@ -43,7 +43,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy"
+        "model": "verdure:block/pink_daisies"
       }
     },
     {
@@ -51,7 +51,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 270,
         "uvlock": true
       }
@@ -66,7 +66,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 270,
         "uvlock": true
       }
@@ -76,7 +76,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 180,
         "uvlock": true
       }
@@ -91,7 +91,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 180,
         "uvlock": true
       }
@@ -101,7 +101,7 @@
         "east": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 90,
         "uvlock": true
       }
@@ -116,7 +116,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "y": 90,
         "uvlock": true
       }
@@ -126,7 +126,7 @@
         "down": "true"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "x": 90,
         "uvlock": true
       }
@@ -141,7 +141,7 @@
         "down": "false"
       },
       "apply": {
-        "model": "verdure:block/daisy",
+        "model": "verdure:block/pink_daisies",
         "x": 90,
         "uvlock": true
       }

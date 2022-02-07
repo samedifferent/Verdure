@@ -1,8 +1,8 @@
 {
   "ambientocclusion": false,
   "textures": {
-    "particle": "verdure:block/daisy",
-    "daisy": "verdure:block/daisy"
+    "particle": "verdure:block/daisies",
+    "daisy": "verdure:block/daisies"
   },
   "elements": [
     {   "from": [ 0, 0, 0.1 ],

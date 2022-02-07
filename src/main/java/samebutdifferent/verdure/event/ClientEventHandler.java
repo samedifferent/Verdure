@@ -17,5 +17,8 @@ public class ClientEventHandler {
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.CLOVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.BROWN_MUSHROOM_SHELF.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.RED_MUSHROOM_SHELF.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.DAISIES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.BLUE_DAISIES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.PINK_DAISIES.get(), RenderType.cutout());
     }
 }

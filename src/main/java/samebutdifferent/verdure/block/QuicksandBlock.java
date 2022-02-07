@@ -22,10 +22,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class QuicksandBlock extends Block {
     private static final VoxelShape FALLING_COLLISION_SHAPE = Shapes.box(0.0D, 0.0D, 0.0D, 1.0D, 0.9F, 1.0D);
-    public static final Material QUICKSAND = new Material.Builder(MaterialColor.SAND).replaceable().nonSolid().noCollider().build();
 
-    public QuicksandBlock() {
-        super(Properties.of(QUICKSAND).strength(0.25F).sound(SoundType.SAND).dynamicShape());
+    public QuicksandBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
