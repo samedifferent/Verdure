@@ -2,6 +2,7 @@ package samebutdifferent.verdure.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -42,7 +43,7 @@ public class MushroomShelfBlock extends Block {
 
     private boolean canAttachTo(BlockGetter pBlockReader, BlockPos pPos, Direction pDirection) {
         BlockState blockstate = pBlockReader.getBlockState(pPos);
-        return blockstate.isFaceSturdy(pBlockReader, pPos, pDirection);
+        return blockstate.isFaceSturdy(pBlockReader, pPos, pDirection) && blockstate.is(BlockTags.LOGS);
     }
 
     @Override
