@@ -1,0 +1,62 @@
+{
+  "variants": {
+    "axis=x": [
+      {
+        "model": "verdure:block/slate",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "verdure:block/slate_mirrored",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "verdure:block/slate",
+        "y": 90,
+        "x": 90
+      },
+      {
+        "model": "verdure:block/slate_mirrored",
+        "y": 90,
+        "x": 90
+      }
+    ],
+    "axis=y": [
+      {
+        "model": "verdure:block/slate"
+      },
+      {
+        "model": "verdure:block/slate_mirrored"
+      },
+      {
+        "model": "verdure:block/slate",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/slate_mirrored",
+        "y": 180
+      }
+    ],
+    "axis=z": [
+      {
+        "model": "verdure:block/slate",
+        "x": 90
+      },
+      {
+        "model": "verdure:block/slate_mirrored",
+        "x": 90
+      },
+      {
+        "model": "verdure:block/slate",
+        "y": 180,
+        "x": 90
+      },
+      {
+        "model": "verdure:block/slate_mirrored",
+        "y": 180,
+        "x": 90
+      }
+    ]
+  }
+}

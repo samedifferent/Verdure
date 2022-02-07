@@ -1,6 +1,147 @@
 {
   "variants": {
-    "": [
+    "type=sand": [
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles1"
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles2"
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles3"
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 90
+      }
+    ],
+    "type=grass": [
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles1"
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles2"
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles3"
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 90
+      }
+    ],
+    "type=stone": [
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles1"
+      },
+      {
+        "model": "verdure:block/pebbles1",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles2"
+      },
+      {
+        "model": "verdure:block/pebbles2",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/pebbles3"
+      },
+      {
+        "model": "verdure:block/pebbles3",
+        "y": 90
+      }
+    ],
+    "type=slate": [
       {
         "model": "verdure:block/pebbles1",
         "y": 270

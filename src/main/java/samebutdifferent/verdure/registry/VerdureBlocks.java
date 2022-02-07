@@ -2,10 +2,7 @@ package samebutdifferent.verdure.registry;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MultifaceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -29,8 +26,7 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> DAISIES = registerBlock("daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> BLUE_DAISIES = registerBlock("blue_daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
     public static final RegistryObject<Block> PINK_DAISIES = registerBlock("pink_daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
-    public static final RegistryObject<Block> DRIED_MUD = registerBlock("dried_mud", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)));
-    public static final RegistryObject<Block> QUICKSAND = registerBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.of(new Material.Builder(MaterialColor.SAND).replaceable().nonSolid().noCollider().build()).strength(0.25F).sound(SoundType.SAND).dynamicShape()));
+    public static final RegistryObject<Block> SLATE = registerBlock("slate", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = VerdureBlocks.BLOCKS.register(name, block);
