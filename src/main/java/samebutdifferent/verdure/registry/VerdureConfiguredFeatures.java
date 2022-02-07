@@ -23,7 +23,8 @@ public class VerdureConfiguredFeatures {
     public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_SLATE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(VerdureBlocks.SLATE.get().defaultBlockState()));
     public static final ConfiguredFeature<DiskConfiguration, ?> SMOOTH_DIRT_PATCH = VerdureFeatures.SMOOTH_DIRT_PATCH.get().configured(new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(2, 3), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_CLOVER = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(32, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.CLOVER.get()))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_PEBBLES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(32, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get()))).onlyWhenEmpty()));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_PEBBLES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(24, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get()))).onlyWhenEmpty()));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ROCK = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(24, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get()))).onlyWhenEmpty()));
 
     public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> registerConfiguredFeature(String pKey, ConfiguredFeature<FC, ?> pConfiguredFeature) {
         return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pConfiguredFeature);
@@ -38,5 +39,6 @@ public class VerdureConfiguredFeatures {
         registerConfiguredFeature("smooth_dirt_patch", SMOOTH_DIRT_PATCH);
         registerConfiguredFeature("patch_clover", PATCH_CLOVER);
         registerConfiguredFeature("patch_pebbles", PATCH_PEBBLES);
+        registerConfiguredFeature("patch_rock", PATCH_ROCK);
     }
 }

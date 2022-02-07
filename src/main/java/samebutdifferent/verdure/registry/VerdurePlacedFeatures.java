@@ -20,6 +20,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature SMOOTH_DIRT_PATCH = VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH.placed(CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(VegetationPlacements.worldSurfaceSquaredWithCount(2));
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(2));
+    public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(VegetationPlacements.worldSurfaceSquaredWithCount(2));
 
     public static PlacedFeature registerPlacedFeature(String pKey, PlacedFeature pPlacedFeature) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pPlacedFeature);
@@ -34,5 +35,6 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("smooth_dirt_patch", SMOOTH_DIRT_PATCH);
         registerPlacedFeature("patch_clover", PATCH_CLOVER);
         registerPlacedFeature("patch_pebbles", PATCH_PEBBLES);
+        registerPlacedFeature("patch_rock", PATCH_ROCK);
     }
 }
