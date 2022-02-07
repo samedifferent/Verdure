@@ -29,6 +29,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
         BlockState log = this.getBiomeLog(level, origin);
         Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos.MutableBlockPos mutable = origin.mutable();
+        boolean mossy = random.nextBoolean() && level.getBiome(origin).getBiomeCategory().equals(Biome.BiomeCategory.FOREST);
 
         // check for available space
         for (int i = 0; i < 4; i++) {
@@ -43,7 +44,11 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
 
         // place logs
         for (int i = 0; i < 4; i++) {
-            level.setBlock(mutable.move(direction), log.setValue(RotatedPillarBlock.AXIS, direction.getAxis()), 3);
+            level.setBlock(mutable, log.setValue(RotatedPillarBlock.AXIS, direction.getAxis()), 3);
+            if (mossy) {
+                level.setBlock(mutable.above(), Blocks.MOSS_CARPET.defaultBlockState(), 3);
+            }
+            mutable.move(direction);
         }
 
         return true;

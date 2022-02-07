@@ -1,0 +1,32 @@
+{
+	"parent": "block/thin_block",
+	"textures": {
+		"particle": "block/moss_block",
+		"moss": "block/moss_block",
+		"overlay": "verdure:block/moss_carpet_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 15, 16, 16], "texture": "#moss", "cullface": "north"},
+				"east": {"uv": [0, 15, 16, 16], "texture": "#moss", "cullface": "east"},
+				"south": {"uv": [0, 15, 16, 16], "texture": "#moss", "cullface": "south"},
+				"west": {"uv": [0, 15, 16, 16], "texture": "#moss", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#moss"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#moss", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, -16, 0],
+			"to": [16, 0, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#overlay", "cullface": "north", "tintindex": 0},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#overlay", "cullface": "east", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#overlay", "cullface": "south", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#overlay", "cullface": "west", "tintindex": 0}
+			}
+		}
+	]
+}

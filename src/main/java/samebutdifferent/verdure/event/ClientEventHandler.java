@@ -2,6 +2,7 @@ package samebutdifferent.verdure.event;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,5 +21,6 @@ public class ClientEventHandler {
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.DAISIES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.BLUE_DAISIES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.PINK_DAISIES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(Blocks.MOSS_CARPET, RenderType.cutout());
     }
 }
