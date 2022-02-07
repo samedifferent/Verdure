@@ -10,6 +10,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import samebutdifferent.verdure.registry.VerdureBlocks;
+import samebutdifferent.verdure.registry.VerdureFeatures;
 import samebutdifferent.verdure.registry.VerdureItems;
 
 @Mod(Verdure.MOD_ID)
@@ -28,6 +29,7 @@ public class Verdure {
 
         VerdureBlocks.BLOCKS.register(bus);
         VerdureItems.ITEMS.register(bus);
+        VerdureFeatures.FEATURES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
