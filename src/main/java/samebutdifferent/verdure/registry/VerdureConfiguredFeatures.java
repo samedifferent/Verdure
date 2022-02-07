@@ -8,9 +8,8 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import samebutdifferent.verdure.Verdure;
 
 import java.util.List;
@@ -23,6 +22,7 @@ public class VerdureConfiguredFeatures {
     public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_ANDESITE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(Blocks.ANDESITE.defaultBlockState()));
     public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_SLATE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(VerdureBlocks.SLATE.get().defaultBlockState()));
     public static final ConfiguredFeature<DiskConfiguration, ?> SMOOTH_DIRT_PATCH = VerdureFeatures.SMOOTH_DIRT_PATCH.get().configured(new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(2, 3), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_CLOVER = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(32, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.CLOVER.get()))).onlyWhenEmpty()));
 
     public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> registerConfiguredFeature(String pKey, ConfiguredFeature<FC, ?> pConfiguredFeature) {
         return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pConfiguredFeature);
@@ -35,5 +35,6 @@ public class VerdureConfiguredFeatures {
         registerConfiguredFeature("boulder_andesite", BOULDER_ANDESITE);
         registerConfiguredFeature("boulder_slate", BOULDER_SLATE);
         registerConfiguredFeature("smooth_dirt_patch", SMOOTH_DIRT_PATCH);
+        registerConfiguredFeature("patch_clover", PATCH_CLOVER);
     }
 }
