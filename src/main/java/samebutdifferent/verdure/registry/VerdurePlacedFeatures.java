@@ -25,6 +25,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
     public static final PlacedFeature DAISIES = VerdureConfiguredFeatures.DAISIES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
+    public static final PlacedFeature FALLEN_LOG = VerdureConfiguredFeatures.FALLEN_LOG.placed(VegetationPlacements.worldSurfaceSquaredWithCount(2));
 
     public static PlacedFeature registerPlacedFeature(String pKey, PlacedFeature pPlacedFeature) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pPlacedFeature);
@@ -41,5 +42,6 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("patch_pebbles", PATCH_PEBBLES);
         registerPlacedFeature("patch_rock", PATCH_ROCK);
         registerPlacedFeature("daisies", DAISIES);
+        registerPlacedFeature("fallen_log", FALLEN_LOG);
     }
 }
