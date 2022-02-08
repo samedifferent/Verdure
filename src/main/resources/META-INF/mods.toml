@@ -1,16 +1,13 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="All rights reserved"
-#issueTrackerURL="https://github.com/Example/Example/issues"
 
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-#updateJSONURL="https://change.me.example.invalid/updates.json"
-#displayURL="https://github.com/Example/Example"
-#logoFile="examplemod.png"# A text field displayed in the mod UI
-#credits=""
+displayURL="https://www.curseforge.com/minecraft/mc-mods/verdure"
+logoFile="logo.png"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
