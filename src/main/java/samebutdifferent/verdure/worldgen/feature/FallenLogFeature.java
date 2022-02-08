@@ -45,7 +45,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
         // place logs
         for (int i = 0; i < 4; i++) {
             level.setBlock(mutable, log.setValue(RotatedPillarBlock.AXIS, direction.getAxis()), 3);
-            if (mossy) {
+            if (mossy && random.nextBoolean()) {
                 level.setBlock(mutable.above(), Blocks.MOSS_CARPET.defaultBlockState(), 3);
             }
             mutable.move(direction);
@@ -56,8 +56,10 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
 
     private BlockState getBiomeLog(WorldGenLevel level, BlockPos pos) {
         Biome biome = level.getBiome(pos);
-        if (biome.getRegistryName().getPath().equals("birch_forest")) {
+        if (biome.getRegistryName().getPath().contains("birch")) {
             return Blocks.BIRCH_LOG.defaultBlockState();
+        } else if (biome.getRegistryName().getPath().equals("dark_forest")) {
+            return Blocks.DARK_OAK_LOG.defaultBlockState();
         } else {
             switch (biome.getBiomeCategory()) {
                 case JUNGLE -> {
