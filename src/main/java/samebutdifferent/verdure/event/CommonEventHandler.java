@@ -40,9 +40,10 @@ public class CommonEventHandler {
 
         switch (event.getCategory()) {
             case FOREST -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_STONE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_STONE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                 addGrassyAreaFeatures(builder);
             }
             case PLAINS -> {
@@ -51,40 +52,41 @@ public class CommonEventHandler {
                 addGrassyAreaFeatures(builder);
             }
             case RIVER -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
             }
             case JUNGLE -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
                 addGrassyAreaFeatures(builder);
             }
             case TAIGA -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_DIORITE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_DIORITE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                 addGrassyAreaFeatures(builder);
             }
             case SAVANNA -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_GRANITE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_GRANITE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
                 addGrassyAreaFeatures(builder);
             }
             case BEACH -> {
-                builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_ANDESITE);
+                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_ANDESITE);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
             }
             case SWAMP -> {
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                 addGrassyAreaFeatures(builder);
             }
         }
     }
 
     private static void addGrassyAreaFeatures(BiomeGenerationSettingsBuilder builder) {
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
