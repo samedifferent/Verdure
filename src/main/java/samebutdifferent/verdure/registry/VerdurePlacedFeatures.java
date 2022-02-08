@@ -20,12 +20,13 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature BOULDER_SLATE = VerdureConfiguredFeatures.BOULDER_SLATE.placed(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     public static final PlacedFeature SMOOTH_DIRT_PATCH = VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH.placed(RarityFilter.onAverageOnceEvery(7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     public static final PlacedFeature SMOOTH_DIRT_PATCH_SWAMP = VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH_SWAMP.placed(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-    public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(worldSurfaceSquaredWithRarityFilter(2));
+    public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(worldSurfaceSquaredWithRarityFilter(1));
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_DAISIES = VerdureConfiguredFeatures.PATCH_DAISIES.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature FALLEN_LOG = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(7));
     public static final PlacedFeature FALLEN_LOG_SAVANNA = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(13));
+    public static final PlacedFeature FALLEN_LOG_NETHER = VerdureConfiguredFeatures.FALLEN_LOG.placed(CountOnEveryLayerPlacement.of(3), BiomeFilter.biome());
     public static final PlacedFeature MUSHROOM_SHELF = VerdureConfiguredFeatures.MUSHROOM_SHELF.placed(CountPlacement.of(512), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(64), VerticalAnchor.absolute(100)), BiomeFilter.biome());
 
     public static PlacedFeature registerPlacedFeature(String pKey, PlacedFeature pPlacedFeature) {
@@ -46,6 +47,7 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("patch_daisies", PATCH_DAISIES);
         registerPlacedFeature("fallen_log", FALLEN_LOG);
         registerPlacedFeature("fallen_log_savanna", FALLEN_LOG_SAVANNA);
+        registerPlacedFeature("fallen_log_nether", FALLEN_LOG_NETHER);
         registerPlacedFeature("mushroom_shelf", MUSHROOM_SHELF);
     }
 

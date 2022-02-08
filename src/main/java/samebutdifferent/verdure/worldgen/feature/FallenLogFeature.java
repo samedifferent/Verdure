@@ -33,7 +33,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
 
         // check for available space
         for (int i = 0; i < 4; i++) {
-            if ((level.getBlockState(mutable).getMaterial().isReplaceable() || level.getBlockState(mutable).getMaterial().equals(Material.DECORATION)) && level.getBlockState(mutable.below()).is(BlockTags.DIRT)) {
+            if ((level.getBlockState(mutable).getMaterial().isReplaceable() || level.getBlockState(mutable).getMaterial().equals(Material.DECORATION)) && (level.getBlockState(mutable.below()).is(BlockTags.DIRT) || level.getBlockState(mutable.below()).is(BlockTags.NYLIUM))) {
                 mutable.move(direction);
             } else {
                 return false;
@@ -60,6 +60,10 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
             return Blocks.BIRCH_LOG.defaultBlockState();
         } else if (biome.getRegistryName().getPath().equals("dark_forest")) {
             return Blocks.DARK_OAK_LOG.defaultBlockState();
+        } else if (biome.getRegistryName().getPath().equals("warped_forest")) {
+            return Blocks.WARPED_STEM.defaultBlockState();
+        } else if (biome.getRegistryName().getPath().equals("crimson_forest")) {
+            return Blocks.CRIMSON_STEM.defaultBlockState();
         } else {
             switch (biome.getBiomeCategory()) {
                 case JUNGLE -> {
