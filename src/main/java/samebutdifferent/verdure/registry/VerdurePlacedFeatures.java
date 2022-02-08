@@ -28,7 +28,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
     public static final PlacedFeature DAISIES = VerdureConfiguredFeatures.DAISIES.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
     public static final PlacedFeature FALLEN_LOG = VerdureConfiguredFeatures.FALLEN_LOG.placed(VegetationPlacements.worldSurfaceSquaredWithCount(1));
-    public static final PlacedFeature MUSHROOM_SHELF = VerdureConfiguredFeatures.MUSHROOM_SHELF.placed(CountPlacement.of(512), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, BiomeFilter.biome());
+    public static final PlacedFeature MUSHROOM_SHELF = VerdureConfiguredFeatures.MUSHROOM_SHELF.placed(CountPlacement.of(512), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(64), VerticalAnchor.absolute(100)), BiomeFilter.biome());
 
     public static PlacedFeature registerPlacedFeature(String pKey, PlacedFeature pPlacedFeature) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pPlacedFeature);
