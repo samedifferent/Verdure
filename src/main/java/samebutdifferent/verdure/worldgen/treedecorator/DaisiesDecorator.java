@@ -28,10 +28,16 @@ public class DaisiesDecorator extends TreeDecorator {
 
     @Override
     public void place(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, List<BlockPos> pLogPositions, List<BlockPos> pLeafPositions) {
+        BlockState state;
+        switch (pRandom.nextInt(3)) {
+            case 1 -> state = VerdureBlocks.BLUE_DAISIES.get().defaultBlockState();
+            case 2 -> state = VerdureBlocks.PINK_DAISIES.get().defaultBlockState();
+            default -> state = VerdureBlocks.DAISIES.get().defaultBlockState();
+        }
         pLeafPositions.forEach((pos -> {
             for (Direction direction : Direction.values()) {
                 if (Feature.isAir(pLevel, pos.relative(direction))) {
-                    pBlockSetter.accept(pos.relative(direction), VerdureBlocks.DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(direction.getOpposite()), true));
+                    pBlockSetter.accept(pos.relative(direction), state.setValue(MultifaceBlock.getFaceProperty(direction.getOpposite()), true));
                 }
             }
         }));
