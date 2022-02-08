@@ -34,12 +34,15 @@ public class CommonEventHandler {
         BiomeGenerationSettingsBuilder builder = event.getGeneration();
         String name = event.getName().getPath();
 
-        if (name.equals("warped_forest") || name.equals("crimson_forest")) {
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
-        }
-
         switch (event.getCategory()) {
             case FOREST -> {
+                if (name.contains("birch")) {
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                }
+                if (name.equals("forest")) {
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                }
                 builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_STONE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
@@ -82,6 +85,11 @@ public class CommonEventHandler {
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                 addGrassyAreaFeatures(builder);
+            }
+            case NETHER -> {
+                if (name.contains("forest")) {
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
+                }
             }
         }
     }

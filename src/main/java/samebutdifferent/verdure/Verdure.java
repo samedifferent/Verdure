@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import samebutdifferent.verdure.registry.VerdureBlocks;
 import samebutdifferent.verdure.registry.VerdureFeatures;
 import samebutdifferent.verdure.registry.VerdureItems;
+import samebutdifferent.verdure.registry.VerdureTreeDecoratorTypes;
 
 @Mod(Verdure.MOD_ID)
 public class Verdure {
@@ -30,6 +31,7 @@ public class Verdure {
         VerdureBlocks.BLOCKS.register(bus);
         VerdureItems.ITEMS.register(bus);
         VerdureFeatures.FEATURES.register(bus);
+        VerdureTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
