@@ -98,6 +98,7 @@ public class CommonEventHandler {
                 }
             }
         }
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.UNDERGROUND_MUSHROOM_SHELF);
     }
 
     private static void addGrassyAreaFeatures(BiomeGenerationSettingsBuilder builder) {
@@ -112,13 +113,15 @@ public class CommonEventHandler {
         Player player = event.getPlayer();
         Level level = player.level;
         ItemStack stack = event.getItemStack();
-        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) || level.getBlockState(event.getPos()).is(BlockTags.DIRT)) {
+        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) || level.getBlockState(event.getPos()).is(BlockTags.DIRT) || level.getBlockState(event.getPos()).is(BlockTags.STONE_ORE_REPLACEABLES)) {
             if (event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
                 BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
-                if (stack.is(Items.BROWN_MUSHROOM)) {
-                    placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
-                } else if (stack.is(Items.RED_MUSHROOM)) {
-                    placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+                if (level.isEmptyBlock(pos)) {
+                    if (stack.is(Items.BROWN_MUSHROOM)) {
+                        placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
+                    } else if (stack.is(Items.RED_MUSHROOM)) {
+                        placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+                    }
                 }
             }
         }

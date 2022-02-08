@@ -40,6 +40,7 @@ public class VerdureConfiguredFeatures {
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_WILDFLOWERS = Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(64, 6, 2, () -> Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.WILDFLOWERS.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true)))).onlyWhenEmpty()));
     public static final ConfiguredFeature<NoneFeatureConfiguration, ?> FALLEN_LOG = VerdureFeatures.FALLEN_LOG.get().configured(FeatureConfiguration.NONE);
     public static final ConfiguredFeature<NoneFeatureConfiguration, ?> MUSHROOM_SHELF = VerdureFeatures.MUSHROOM_SHELF.get().configured(FeatureConfiguration.NONE);
+    public static final ConfiguredFeature<NoneFeatureConfiguration, ?> UNDERGROUND_MUSHROOM_SHELF = VerdureFeatures.UNDERGROUND_MUSHROOM_SHELF.get().configured(FeatureConfiguration.NONE);
     public static final ConfiguredFeature<TreeConfiguration, ?> OAK_DAISIES = Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
     public static final ConfiguredFeature<TreeConfiguration, ?> BIRCH_DAISIES = Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.BIRCH_LOG), new StraightTrunkPlacer(5, 2, 0), BlockStateProvider.simple(Blocks.BIRCH_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
 
@@ -62,6 +63,7 @@ public class VerdureConfiguredFeatures {
         registerConfiguredFeature("patch_wildflowers", PATCH_WILDFLOWERS);
         registerConfiguredFeature("fallen_log", FALLEN_LOG);
         registerConfiguredFeature("mushroom_shelf", MUSHROOM_SHELF);
+        registerConfiguredFeature("underground_mushroom_shelf", UNDERGROUND_MUSHROOM_SHELF);
         registerConfiguredFeature("oak_daisies", OAK_DAISIES);
         registerConfiguredFeature("birch_daisies", BIRCH_DAISIES);
     }

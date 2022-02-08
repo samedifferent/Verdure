@@ -6,7 +6,9 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -32,6 +34,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature FALLEN_LOG_SAVANNA = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(13));
     public static final PlacedFeature FALLEN_LOG_NETHER = VerdureConfiguredFeatures.FALLEN_LOG.placed(CountOnEveryLayerPlacement.of(3), BiomeFilter.biome());
     public static final PlacedFeature MUSHROOM_SHELF = VerdureConfiguredFeatures.MUSHROOM_SHELF.placed(CountPlacement.of(256), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(64), VerticalAnchor.absolute(100)), BiomeFilter.biome());
+    public static final PlacedFeature UNDERGROUND_MUSHROOM_SHELF = VerdureConfiguredFeatures.UNDERGROUND_MUSHROOM_SHELF.placed(CountPlacement.of(UniformInt.of(104, 157)), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, InSquarePlacement.spread(), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -13), BiomeFilter.biome());
     public static final PlacedFeature OAK_DAISIES = VerdureConfiguredFeatures.OAK_DAISIES.placed(PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
     public static final PlacedFeature BIRCH_DAISIES = VerdureConfiguredFeatures.BIRCH_DAISIES.placed(PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome());
 
@@ -56,6 +59,7 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("fallen_log_savanna", FALLEN_LOG_SAVANNA);
         registerPlacedFeature("fallen_log_nether", FALLEN_LOG_NETHER);
         registerPlacedFeature("mushroom_shelf", MUSHROOM_SHELF);
+        registerPlacedFeature("underground_mushroom_shelf", UNDERGROUND_MUSHROOM_SHELF);
         registerPlacedFeature("oak_daisies", OAK_DAISIES);
         registerPlacedFeature("birch_daisies", BIRCH_DAISIES);
     }
