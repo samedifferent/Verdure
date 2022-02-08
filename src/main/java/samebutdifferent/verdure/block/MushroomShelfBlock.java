@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import samebutdifferent.verdure.registry.VerdureBlocks;
 
 public class MushroomShelfBlock extends Block {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -41,7 +42,7 @@ public class MushroomShelfBlock extends Block {
         }
     }
 
-    private boolean canAttachTo(BlockGetter pBlockReader, BlockPos pPos, Direction pDirection) {
+    public static boolean canAttachTo(BlockGetter pBlockReader, BlockPos pPos, Direction pDirection) {
         BlockState blockstate = pBlockReader.getBlockState(pPos);
         return blockstate.isFaceSturdy(pBlockReader, pPos, pDirection) && blockstate.is(BlockTags.LOGS);
     }
@@ -49,7 +50,7 @@ public class MushroomShelfBlock extends Block {
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         Direction direction = pState.getValue(FACING);
-        return this.canAttachTo(pLevel, pPos.relative(direction.getOpposite()), direction);
+        return canAttachTo(pLevel, pPos.relative(direction.getOpposite()), direction);
     }
 
     @Override
