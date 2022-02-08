@@ -21,6 +21,7 @@ public class ClientEventHandler {
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.DAISIES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.BLUE_DAISIES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.PINK_DAISIES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VerdureBlocks.WILDFLOWERS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(Blocks.MOSS_CARPET, RenderType.cutout());
     }
 }

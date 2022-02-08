@@ -27,6 +27,7 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_DAISIES = VerdureConfiguredFeatures.PATCH_DAISIES.placed(worldSurfaceSquaredWithRarityFilter(2));
+    public static final PlacedFeature PATCH_WILDFLOWERS = VerdureConfiguredFeatures.PATCH_WILDFLOWERS.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature FALLEN_LOG = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(7));
     public static final PlacedFeature FALLEN_LOG_SAVANNA = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(13));
     public static final PlacedFeature FALLEN_LOG_NETHER = VerdureConfiguredFeatures.FALLEN_LOG.placed(CountOnEveryLayerPlacement.of(3), BiomeFilter.biome());
@@ -50,6 +51,7 @@ public class VerdurePlacedFeatures {
         registerPlacedFeature("patch_pebbles", PATCH_PEBBLES);
         registerPlacedFeature("patch_rock", PATCH_ROCK);
         registerPlacedFeature("patch_daisies", PATCH_DAISIES);
+        registerPlacedFeature("patch_wildflowers", PATCH_WILDFLOWERS);
         registerPlacedFeature("fallen_log", FALLEN_LOG);
         registerPlacedFeature("fallen_log_savanna", FALLEN_LOG_SAVANNA);
         registerPlacedFeature("fallen_log_nether", FALLEN_LOG_NETHER);

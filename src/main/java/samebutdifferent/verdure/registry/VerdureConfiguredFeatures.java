@@ -37,6 +37,7 @@ public class VerdureConfiguredFeatures {
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_PEBBLES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(5, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get()))).onlyWhenEmpty()));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ROCK = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(5, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get()))).onlyWhenEmpty()));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_DAISIES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(10, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.BLUE_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.PINK_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).build()))).onlyWhenEmpty()));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_WILDFLOWERS = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(10, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.WILDFLOWERS.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true)))).onlyWhenEmpty()));
     public static final ConfiguredFeature<NoneFeatureConfiguration, ?> FALLEN_LOG = VerdureFeatures.FALLEN_LOG.get().configured(FeatureConfiguration.NONE);
     public static final ConfiguredFeature<NoneFeatureConfiguration, ?> MUSHROOM_SHELF = VerdureFeatures.MUSHROOM_SHELF.get().configured(FeatureConfiguration.NONE);
     public static final ConfiguredFeature<TreeConfiguration, ?> OAK_DAISIES = Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
@@ -58,6 +59,7 @@ public class VerdureConfiguredFeatures {
         registerConfiguredFeature("patch_pebbles", PATCH_PEBBLES);
         registerConfiguredFeature("patch_rock", PATCH_ROCK);
         registerConfiguredFeature("patch_daisies", PATCH_DAISIES);
+        registerConfiguredFeature("patch_wildflowers", PATCH_WILDFLOWERS);
         registerConfiguredFeature("fallen_log", FALLEN_LOG);
         registerConfiguredFeature("mushroom_shelf", MUSHROOM_SHELF);
         registerConfiguredFeature("oak_daisies", OAK_DAISIES);
