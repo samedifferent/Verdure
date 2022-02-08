@@ -44,7 +44,7 @@ public class MushroomShelfBlock extends Block {
 
     public static boolean canAttachTo(BlockGetter pBlockReader, BlockPos pPos, Direction pDirection) {
         BlockState blockstate = pBlockReader.getBlockState(pPos);
-        return blockstate.isFaceSturdy(pBlockReader, pPos, pDirection) && blockstate.is(BlockTags.LOGS);
+        return blockstate.isFaceSturdy(pBlockReader, pPos, pDirection) && (blockstate.is(BlockTags.LOGS) || blockstate.is(BlockTags.DIRT));
     }
 
     @Override

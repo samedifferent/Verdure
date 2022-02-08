@@ -78,7 +78,9 @@ public class CommonEventHandler {
                 builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_GRANITE);
                 builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
                 builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
-                addGrassyAreaFeatures(builder);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
+                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
             }
             case BEACH -> {
                 builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_ANDESITE);
@@ -110,12 +112,14 @@ public class CommonEventHandler {
         Player player = event.getPlayer();
         Level level = player.level;
         ItemStack stack = event.getItemStack();
-        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) && event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
-            BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
-            if (stack.is(Items.BROWN_MUSHROOM)) {
-                placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
-            } else if (stack.is(Items.RED_MUSHROOM)) {
-                placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) || level.getBlockState(event.getPos()).is(BlockTags.DIRT)) {
+            if (event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
+                BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
+                if (stack.is(Items.BROWN_MUSHROOM)) {
+                    placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
+                } else if (stack.is(Items.RED_MUSHROOM)) {
+                    placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+                }
             }
         }
     }
