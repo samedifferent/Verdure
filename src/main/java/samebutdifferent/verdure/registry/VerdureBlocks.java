@@ -28,7 +28,7 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> PINK_DAISIES = registerBlock("pink_daisies", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
     public static final RegistryObject<Block> WILDFLOWERS = registerBlock("wildflowers", () -> new MultifaceBlock(BlockBehaviour.Properties.copy(DAISIES.get())));
     public static final RegistryObject<Block> SLATE = registerBlock("slate", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE)));
-//    public static final RegistryObject<Block> DRIED_MUD = registerBlock("dried_mud", () -> new DriedMudBlock(BlockBehaviour.Properties.of(Material.DIRT).strength(0.8F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> DRIED_MUD = registerBlock("dried_mud", () -> new DriedMudBlock(BlockBehaviour.Properties.of(Material.DIRT).strength(0.8F).sound(SoundType.GRAVEL)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = VerdureBlocks.BLOCKS.register(name, block);
