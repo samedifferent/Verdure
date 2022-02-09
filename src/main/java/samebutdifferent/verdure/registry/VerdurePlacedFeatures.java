@@ -25,11 +25,11 @@ public class VerdurePlacedFeatures {
     public static final PlacedFeature BOULDER_SLATE = VerdureConfiguredFeatures.BOULDER_SLATE.placed(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     public static final PlacedFeature SMOOTH_DIRT_PATCH = VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH.placed(RarityFilter.onAverageOnceEvery(7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     public static final PlacedFeature SMOOTH_DIRT_PATCH_SWAMP = VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH_SWAMP.placed(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-    public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(worldSurfaceSquaredWithRarityFilter(1));
+    public static final PlacedFeature PATCH_CLOVER = VerdureConfiguredFeatures.PATCH_CLOVER.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_PEBBLES = VerdureConfiguredFeatures.PATCH_PEBBLES.placed(worldSurfaceSquaredWithRarityFilter(2));
     public static final PlacedFeature PATCH_ROCK = VerdureConfiguredFeatures.PATCH_ROCK.placed(worldSurfaceSquaredWithRarityFilter(2));
-    public static final PlacedFeature PATCH_DAISIES = VerdureConfiguredFeatures.PATCH_DAISIES.placed(worldSurfaceSquaredWithRarityFilter(2));
-    public static final PlacedFeature PATCH_WILDFLOWERS = VerdureConfiguredFeatures.PATCH_WILDFLOWERS.placed(worldSurfaceSquaredWithRarityFilter(2));
+    public static final PlacedFeature PATCH_DAISIES = VerdureConfiguredFeatures.PATCH_DAISIES.placed(worldSurfaceSquaredWithRarityFilter(3));
+    public static final PlacedFeature PATCH_WILDFLOWERS = VerdureConfiguredFeatures.PATCH_WILDFLOWERS.placed(worldSurfaceSquaredWithRarityFilter(3));
     public static final PlacedFeature FALLEN_LOG = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(7));
     public static final PlacedFeature FALLEN_LOG_SAVANNA = VerdureConfiguredFeatures.FALLEN_LOG.placed(worldSurfaceSquaredWithRarityFilter(13));
     public static final PlacedFeature FALLEN_LOG_NETHER = VerdureConfiguredFeatures.FALLEN_LOG.placed(CountOnEveryLayerPlacement.of(3), BiomeFilter.biome());
