@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_dye_from_pink_daisies"
+    ]
+  },
+  "criteria": {
+    "has_pink_daisies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "verdure:pink_daisies"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:pink_dye_from_pink_daisies"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_daisies",
+      "has_the_recipe"
+    ]
+  ]
+}

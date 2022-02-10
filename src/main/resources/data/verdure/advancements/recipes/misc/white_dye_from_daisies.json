@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:white_dye_from_daisies"
+    ]
+  },
+  "criteria": {
+    "has_daisies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "verdure:daisies"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:white_dye_from_daisies"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_daisies",
+      "has_the_recipe"
+    ]
+  ]
+}

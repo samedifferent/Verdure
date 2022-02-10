@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:blue_dye_from_blue_daisies"
+    ]
+  },
+  "criteria": {
+    "has_blue_daisies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "verdure:blue_daisies"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:blue_dye_from_blue_daisies"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_daisies",
+      "has_the_recipe"
+    ]
+  ]
+}
