@@ -7,6 +7,7 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -19,6 +20,7 @@ import samebutdifferent.verdure.Verdure;
 import java.util.List;
 
 public class VerdurePlacedFeatures {
+    private static final BlockPredicate ROCK_PREDICATE = BlockPredicate.anyOf(BlockPredicate.matchesTag(BlockTags.DIRT, new BlockPos(0, -1, 0)), BlockPredicate.matchesTag(BlockTags.STONE_ORE_REPLACEABLES, new BlockPos(0, -1, 0)), BlockPredicate.matchesBlocks(List.of(Blocks.SAND), new BlockPos(0, -1, 0)));
 
     public static final Holder<PlacedFeature> BOULDER_STONE = register("boulder_stone", VerdureConfiguredFeatures.BOULDER_STONE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
     public static final Holder<PlacedFeature> BOULDER_DIORITE = register("boulder_diorite", VerdureConfiguredFeatures.BOULDER_DIORITE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
@@ -28,8 +30,8 @@ public class VerdurePlacedFeatures {
     public static final Holder<PlacedFeature> SMOOTH_DIRT_PATCH = register("smooth_dirt_patch", VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH, List.of(RarityFilter.onAverageOnceEvery(7), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
     public static final Holder<PlacedFeature> SMOOTH_DIRT_PATCH_SWAMP = register("smooth_dirt_patch_swamp", VerdureConfiguredFeatures.SMOOTH_DIRT_PATCH_SWAMP, List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
     public static final Holder<PlacedFeature> PATCH_CLOVER = register("patch_clover", VerdureConfiguredFeatures.PATCH_CLOVER, worldSurfaceSquaredWithRarityFilter(5));
-    public static final Holder<PlacedFeature> PATCH_PEBBLES = register("patch_pebbles", VerdureConfiguredFeatures.PATCH_PEBBLES, worldSurfaceSquaredWithRarityFilter(1));
-    public static final Holder<PlacedFeature> PATCH_ROCK = register("patch_rock", VerdureConfiguredFeatures.PATCH_ROCK, worldSurfaceSquaredWithRarityFilter(1));
+    public static final Holder<PlacedFeature> PATCH_PEBBLES = register("patch_pebbles", VerdureConfiguredFeatures.PATCH_PEBBLES, List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(ROCK_PREDICATE), BiomeFilter.biome()));
+    public static final Holder<PlacedFeature> PATCH_ROCK = register("patch_rock", VerdureConfiguredFeatures.PATCH_ROCK, List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BlockPredicateFilter.forPredicate(ROCK_PREDICATE), BiomeFilter.biome()));
     public static final Holder<PlacedFeature> PATCH_DAISIES = register("patch_daisies", VerdureConfiguredFeatures.PATCH_DAISIES, worldSurfaceSquaredWithRarityFilter(6));
     public static final Holder<PlacedFeature> PATCH_WILDFLOWERS = register("patch_wildflowers", VerdureConfiguredFeatures.PATCH_WILDFLOWERS, worldSurfaceSquaredWithRarityFilter(6));
     public static final Holder<PlacedFeature> FALLEN_LOG = register("fallen_log", VerdureConfiguredFeatures.FALLEN_LOG, worldSurfaceSquaredWithRarityFilter(7));

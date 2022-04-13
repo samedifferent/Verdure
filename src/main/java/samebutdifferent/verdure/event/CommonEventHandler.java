@@ -3,6 +3,7 @@ package samebutdifferent.verdure.event;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -11,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,71 +33,73 @@ public class CommonEventHandler {
     @SubscribeEvent
     public static void onBiomeLoad(BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder builder = event.getGeneration();
-        String name = event.getName().getPath();
+        ResourceLocation location = event.getName();
 
-        switch (event.getCategory()) {
-            case FOREST -> {
-                if (name.contains("birch")) {
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+        if (location != null) {
+            switch (event.getCategory()) {
+                case FOREST -> {
+                    if (location.equals(Biomes.BIRCH_FOREST.location()) || location.equals(Biomes.OLD_GROWTH_BIRCH_FOREST.location())) {
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                    }
+                    if (location.equals(Biomes.FOREST.location())) {
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES);
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                    }
+                    if (location.equals(Biomes.FLOWER_FOREST.location())) {
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                    }
+                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_STONE);
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addGrassyAreaFeatures(builder);
                 }
-                if (name.equals("forest")) {
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES);
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                case PLAINS -> {
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    addGrassyAreaFeatures(builder);
                 }
-                if (name.equals("flower_forest")) {
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                case RIVER -> {
+                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
                 }
-                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_STONE);
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
-                addGrassyAreaFeatures(builder);
-            }
-            case PLAINS -> {
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
-                addGrassyAreaFeatures(builder);
-            }
-            case RIVER -> {
-                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
-            }
-            case JUNGLE -> {
-                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
-                addGrassyAreaFeatures(builder);
-            }
-            case TAIGA -> {
-                if (!name.contains("old_growth")) {
-                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_DIORITE);
+                case JUNGLE -> {
+                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_SLATE);
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    addGrassyAreaFeatures(builder);
                 }
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
-                addGrassyAreaFeatures(builder);
-            }
-            case SAVANNA -> {
-                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_GRANITE);
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
-            }
-            case BEACH -> {
-                builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_ANDESITE);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
-            }
-            case SWAMP -> {
-                builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
-                builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
-                addGrassyAreaFeatures(builder);
-            }
-            case NETHER -> {
-                if (name.contains("forest")) {
-                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
+                case TAIGA -> {
+                    if (!location.equals(Biomes.OLD_GROWTH_PINE_TAIGA.location()) || !location.equals(Biomes.OLD_GROWTH_SPRUCE_TAIGA.location())) {
+                        builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_DIORITE);
+                    }
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addGrassyAreaFeatures(builder);
+                }
+                case SAVANNA -> {
+                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_GRANITE);
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
+                }
+                case BEACH -> {
+                    builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, VerdurePlacedFeatures.BOULDER_ANDESITE);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_PEBBLES);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_ROCK);
+                }
+                case SWAMP -> {
+                    builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
+                    builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addGrassyAreaFeatures(builder);
+                }
+                case NETHER -> {
+                    if (location.equals(Biomes.WARPED_FOREST.location()) || location.equals(Biomes.CRIMSON_FOREST.location())) {
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
+                    }
                 }
             }
         }
