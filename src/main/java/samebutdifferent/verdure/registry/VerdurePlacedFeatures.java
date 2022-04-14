@@ -2,10 +2,7 @@ package samebutdifferent.verdure.registry;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -20,7 +17,7 @@ import samebutdifferent.verdure.Verdure;
 import java.util.List;
 
 public class VerdurePlacedFeatures {
-    private static final BlockPredicate ROCK_PREDICATE = BlockPredicate.anyOf(BlockPredicate.matchesTag(BlockTags.DIRT, new BlockPos(0, -1, 0)), BlockPredicate.matchesTag(BlockTags.STONE_ORE_REPLACEABLES, new BlockPos(0, -1, 0)), BlockPredicate.matchesBlocks(List.of(Blocks.SAND), new BlockPos(0, -1, 0)));
+private static final BlockPredicate ROCK_PREDICATE = BlockPredicate.matchesBlocks(List.of(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, VerdureBlocks.SMOOTH_DIRT.get(), Blocks.SAND), new BlockPos(0, -1, 0));
 
     public static final Holder<PlacedFeature> BOULDER_STONE = register("boulder_stone", VerdureConfiguredFeatures.BOULDER_STONE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
     public static final Holder<PlacedFeature> BOULDER_DIORITE = register("boulder_diorite", VerdureConfiguredFeatures.BOULDER_DIORITE, List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
@@ -41,6 +38,7 @@ public class VerdurePlacedFeatures {
     public static final Holder<PlacedFeature> UNDERGROUND_MUSHROOM_SHELF = register("underground_mushroom_shelf", VerdureConfiguredFeatures.UNDERGROUND_MUSHROOM_SHELF, List.of(CountPlacement.of(UniformInt.of(104, 157)), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, InSquarePlacement.spread(), SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -13), BiomeFilter.biome()));
     public static final Holder<PlacedFeature> OAK_DAISIES = register("oak_daisies", VerdureConfiguredFeatures.OAK_DAISIES, List.of(PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome()));
     public static final Holder<PlacedFeature> BIRCH_DAISIES = register("birch_daisies", VerdureConfiguredFeatures.BIRCH_DAISIES, List.of(PlacementUtils.countExtra(0, 0.05F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.BIRCH_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome()));
+    public static final Holder<PlacedFeature> OAK_HOLLOW = register("oak_hollow", VerdureConfiguredFeatures.OAK_HOLLOW, List.of(PlacementUtils.countExtra(0, 0.15F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome()));
 
     private static Holder<PlacedFeature> register(String name, Holder<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
         return PlacementUtils.register(new ResourceLocation(Verdure.MOD_ID, name).toString(), feature, modifiers);

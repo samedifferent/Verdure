@@ -11,5 +11,7 @@
   "block.verdure.slate": "Slate",
   "block.verdure.smooth_dirt": "Smooth Dirt",
   "block.verdure.dried_mud": "Dried Mud",
+  "block.verdure.hollow_log": "Hollow Log",
+  "container.verdure.hollow_log": "Tree Hollow",
   "itemGroup.verdure": "Verdure"
 }

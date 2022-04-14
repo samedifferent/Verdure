@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "verdure:block/hollow_log",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "verdure:block/hollow_log"
+    },
+    "facing=south": {
+      "model": "verdure:block/hollow_log",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "verdure:block/hollow_log",
+      "y": 270
+    }
+  }
+}

@@ -9,10 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import samebutdifferent.verdure.registry.VerdureBlocks;
-import samebutdifferent.verdure.registry.VerdureFeatures;
-import samebutdifferent.verdure.registry.VerdureItems;
-import samebutdifferent.verdure.registry.VerdureTreeDecoratorTypes;
+import samebutdifferent.verdure.registry.*;
 
 @Mod(Verdure.MOD_ID)
 public class Verdure {
@@ -30,6 +27,7 @@ public class Verdure {
 
         VerdureBlocks.BLOCKS.register(bus);
         VerdureItems.ITEMS.register(bus);
+        VerdureBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         VerdureFeatures.FEATURES.register(bus);
         VerdureTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(bus);
 
