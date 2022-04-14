@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "samebutdifferent.verdure.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "${mod_id}.refmap.json",
+  "mixins": [],
+  "client": [],
+  "minVersion": "0.8.4"
+}
