@@ -1,9 +1,10 @@
 package samebutdifferent.verdure.registry;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
+import net.minecraft.core.Holder;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -26,45 +27,25 @@ import java.util.List;
 
 public class VerdureConfiguredFeatures {
 
-    public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_STONE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(Blocks.STONE.defaultBlockState()));
-    public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_DIORITE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(Blocks.DIORITE.defaultBlockState()));
-    public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_GRANITE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(Blocks.GRANITE.defaultBlockState()));
-    public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_ANDESITE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(Blocks.ANDESITE.defaultBlockState()));
-    public static final ConfiguredFeature<BlockStateConfiguration, ?> BOULDER_SLATE = Feature.FOREST_ROCK.configured(new BlockStateConfiguration(VerdureBlocks.SLATE.get().defaultBlockState()));
-    public static final ConfiguredFeature<DiskConfiguration, ?> SMOOTH_DIRT_PATCH = VerdureFeatures.SMOOTH_DIRT_PATCH.get().configured(new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(2, 6), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
-    public static final ConfiguredFeature<DiskConfiguration, ?> SMOOTH_DIRT_PATCH_SWAMP = VerdureFeatures.SMOOTH_DIRT_PATCH.get().configured(new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(5, 8), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_CLOVER = Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(64, 5, 2, () -> Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.CLOVER.get()))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_PEBBLES = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(5, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get()))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ROCK = Feature.RANDOM_PATCH.configured(FeatureUtils.simpleRandomPatchConfiguration(5, Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get()))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_DAISIES = Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(64, 4, 2, () -> Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.BLUE_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.PINK_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).build()))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_WILDFLOWERS = Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(64, 4, 2, () -> Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.WILDFLOWERS.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true)))).onlyWhenEmpty()));
-    public static final ConfiguredFeature<NoneFeatureConfiguration, ?> FALLEN_LOG = VerdureFeatures.FALLEN_LOG.get().configured(FeatureConfiguration.NONE);
-    public static final ConfiguredFeature<NoneFeatureConfiguration, ?> MUSHROOM_SHELF = VerdureFeatures.MUSHROOM_SHELF.get().configured(FeatureConfiguration.NONE);
-    public static final ConfiguredFeature<NoneFeatureConfiguration, ?> UNDERGROUND_MUSHROOM_SHELF = VerdureFeatures.UNDERGROUND_MUSHROOM_SHELF.get().configured(FeatureConfiguration.NONE);
-    public static final ConfiguredFeature<TreeConfiguration, ?> OAK_DAISIES = Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
-    public static final ConfiguredFeature<TreeConfiguration, ?> BIRCH_DAISIES = Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.BIRCH_LOG), new StraightTrunkPlacer(5, 2, 0), BlockStateProvider.simple(Blocks.BIRCH_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
+    public static final Holder<ConfiguredFeature<BlockStateConfiguration, ?>> BOULDER_STONE = register("boulder_stone", Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.STONE.defaultBlockState()));
+    public static final Holder<ConfiguredFeature<BlockStateConfiguration, ?>> BOULDER_DIORITE = register("boulder_diorite", Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.DIORITE.defaultBlockState()));
+    public static final Holder<ConfiguredFeature<BlockStateConfiguration, ?>> BOULDER_GRANITE = register("boulder_granite", Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.GRANITE.defaultBlockState()));
+    public static final Holder<ConfiguredFeature<BlockStateConfiguration, ?>> BOULDER_ANDESITE = register("boulder_andesite", Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.ANDESITE.defaultBlockState()));
+    public static final Holder<ConfiguredFeature<BlockStateConfiguration, ?>> BOULDER_SLATE = register("boulder_slate", Feature.FOREST_ROCK, new BlockStateConfiguration(VerdureBlocks.SLATE.get().defaultBlockState()));
+    public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> SMOOTH_DIRT_PATCH = register("smooth_dirt_patch", VerdureFeatures.SMOOTH_DIRT_PATCH.get(), new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(2, 6), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
+    public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> SMOOTH_DIRT_PATCH_SWAMP = register("smooth_dirt_patch_swamp", VerdureFeatures.SMOOTH_DIRT_PATCH.get(), new DiskConfiguration(VerdureBlocks.SMOOTH_DIRT.get().defaultBlockState(), UniformInt.of(5, 8), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_CLOVER = register("patch_clover", Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 5, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.CLOVER.get())))));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_PEBBLES = register("patch_pebbles", Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.PEBBLES.get())))));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_ROCK = register("patch_rock", Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.ROCK.get())))));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_DAISIES = register("patch_daisies", Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.BLUE_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).add(VerdureBlocks.PINK_DAISIES.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 1).build())))));
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_WILDFLOWERS = register("patch_wildflowers", Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VerdureBlocks.WILDFLOWERS.get().defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true))))));
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> FALLEN_LOG = register("fallen_log", VerdureFeatures.FALLEN_LOG.get(), FeatureConfiguration.NONE);
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MUSHROOM_SHELF = register("mushroom_shelf", VerdureFeatures.MUSHROOM_SHELF.get(), FeatureConfiguration.NONE);
+    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> UNDERGROUND_MUSHROOM_SHELF = register("underground_mushroom_shelf", VerdureFeatures.UNDERGROUND_MUSHROOM_SHELF.get(), FeatureConfiguration.NONE);
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_DAISIES = register("oak_daisies", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> BIRCH_DAISIES = register("birch_daisies", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.BIRCH_LOG), new StraightTrunkPlacer(5, 2, 0), BlockStateProvider.simple(Blocks.BIRCH_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
 
-    public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> registerConfiguredFeature(String pKey, ConfiguredFeature<FC, ?> pConfiguredFeature) {
-        return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, pKey), pConfiguredFeature);
-    }
-
-    public static void register() {
-        registerConfiguredFeature("boulder_stone", BOULDER_STONE);
-        registerConfiguredFeature("boulder_diorite", BOULDER_DIORITE);
-        registerConfiguredFeature("boulder_granite", BOULDER_GRANITE);
-        registerConfiguredFeature("boulder_andesite", BOULDER_ANDESITE);
-        registerConfiguredFeature("boulder_slate", BOULDER_SLATE);
-        registerConfiguredFeature("smooth_dirt_patch", SMOOTH_DIRT_PATCH);
-        registerConfiguredFeature("smooth_dirt_patch_swamp", SMOOTH_DIRT_PATCH_SWAMP);
-        registerConfiguredFeature("patch_clover", PATCH_CLOVER);
-        registerConfiguredFeature("patch_pebbles", PATCH_PEBBLES);
-        registerConfiguredFeature("patch_rock", PATCH_ROCK);
-        registerConfiguredFeature("patch_daisies", PATCH_DAISIES);
-        registerConfiguredFeature("patch_wildflowers", PATCH_WILDFLOWERS);
-        registerConfiguredFeature("fallen_log", FALLEN_LOG);
-        registerConfiguredFeature("mushroom_shelf", MUSHROOM_SHELF);
-        registerConfiguredFeature("underground_mushroom_shelf", UNDERGROUND_MUSHROOM_SHELF);
-        registerConfiguredFeature("oak_daisies", OAK_DAISIES);
-        registerConfiguredFeature("birch_daisies", BIRCH_DAISIES);
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(String name, F feature, FC configuration) {
+        return BuiltinRegistries.registerExact(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, name).toString(), new ConfiguredFeature<>(feature, configuration));
     }
 }

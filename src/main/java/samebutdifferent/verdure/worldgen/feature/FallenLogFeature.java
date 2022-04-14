@@ -29,7 +29,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
         BlockState log = this.getBiomeLog(level, origin);
         Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos.MutableBlockPos mutable = origin.mutable();
-        boolean mossy = random.nextBoolean() && level.getBiome(origin).getBiomeCategory().equals(Biome.BiomeCategory.FOREST);
+        boolean mossy = random.nextBoolean() && Biome.getBiomeCategory(level.getBiome(origin)).equals(Biome.BiomeCategory.FOREST);
 
         // check for available space
         for (int i = 0; i < 4; i++) {
@@ -55,7 +55,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private BlockState getBiomeLog(WorldGenLevel level, BlockPos pos) {
-        Biome biome = level.getBiome(pos);
+        Biome biome = level.getBiome(pos).value();
         if (biome.getRegistryName().getPath().contains("birch")) {
             return Blocks.BIRCH_LOG.defaultBlockState();
         } else if (biome.getRegistryName().getPath().equals("dark_forest")) {
@@ -65,7 +65,7 @@ public class FallenLogFeature extends Feature<NoneFeatureConfiguration> {
         } else if (biome.getRegistryName().getPath().equals("crimson_forest")) {
             return Blocks.CRIMSON_STEM.defaultBlockState();
         } else {
-            switch (biome.getBiomeCategory()) {
+            switch (Biome.getBiomeCategory(level.getBiome(pos))) {
                 case JUNGLE -> {
                     return Blocks.JUNGLE_LOG.defaultBlockState();
                 }
