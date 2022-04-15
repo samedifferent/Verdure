@@ -105,6 +105,11 @@ public class CommonEventHandler {
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
                     }
                 }
+                case UNDERGROUND -> {
+                    if (location.equals(Biomes.LUSH_CAVES.location())) {
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.HANGING_MOSS);
+                    }
+                }
             }
         }
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.UNDERGROUND_MUSHROOM_SHELF);
