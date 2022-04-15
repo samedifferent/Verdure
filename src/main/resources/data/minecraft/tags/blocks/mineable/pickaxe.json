@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "verdure:slate"
+    "verdure:slate",
+    "verdure:rock",
+    "verdure:pebbles"
   ]
 }

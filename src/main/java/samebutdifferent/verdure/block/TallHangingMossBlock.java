@@ -44,7 +44,7 @@ public class TallHangingMossBlock extends Block {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockPos clickedPos = pContext.getClickedPos();
         Level level = pContext.getLevel();
-        return clickedPos.getY() < level.getMinBuildHeight() + 1 && level.getBlockState(clickedPos.below()).canBeReplaced(pContext) ? super.getStateForPlacement(pContext) : null;
+        return clickedPos.getY() > level.getMinBuildHeight() + 1 && level.getBlockState(clickedPos.below()).canBeReplaced(pContext) ? super.getStateForPlacement(pContext) : null;
     }
 
     @Override

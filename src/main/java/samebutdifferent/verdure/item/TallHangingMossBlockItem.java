@@ -21,8 +21,8 @@ public class TallHangingMossBlockItem extends BlockItem {
     protected boolean placeBlock(BlockPlaceContext pContext, BlockState pState) {
         Level level = pContext.getLevel();
         BlockPos belowPos = pContext.getClickedPos().below();
-        BlockState blockstate = level.isWaterAt(belowPos) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-        level.setBlock(belowPos, blockstate, 27);
+        BlockState belowState = level.isWaterAt(belowPos) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+        level.setBlock(belowPos, belowState, 27);
         return super.placeBlock(pContext, pState);
     }
 }
