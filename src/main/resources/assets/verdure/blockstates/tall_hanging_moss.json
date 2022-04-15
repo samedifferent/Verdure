@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "verdure:block/hanging_moss_bottom"
+    },
+    "half=upper": {
+      "model": "verdure:block/hanging_moss_top"
+    }
+  }
+}

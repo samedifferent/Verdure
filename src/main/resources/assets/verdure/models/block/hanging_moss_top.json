@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "verdure:block/hanging_moss_top"
+  }
+}
