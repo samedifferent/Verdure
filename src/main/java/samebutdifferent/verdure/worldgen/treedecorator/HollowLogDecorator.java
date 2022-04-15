@@ -31,7 +31,7 @@ public class HollowLogDecorator extends TreeDecorator {
 
     @Override
     public void place(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, List<BlockPos> pLogPositions, List<BlockPos> pLeafPositions) {
-        BlockPos pos = pLogPositions.get(1);
+        BlockPos pos = pLogPositions.get(2);
         Direction direction = Direction.from2DDataValue(pRandom.nextInt(4));
 
         pBlockSetter.accept(pos, VerdureBlocks.HOLLOW_LOG.get().defaultBlockState().setValue(HollowLogBlock.FACING, direction));

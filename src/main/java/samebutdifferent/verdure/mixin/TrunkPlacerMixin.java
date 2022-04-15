@@ -20,7 +20,7 @@ public class TrunkPlacerMixin {
 
     @Inject(method = "setDirtAt", at = @At(value = "HEAD"), cancellable = true)
     private static void onSetDirtAt(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, BlockPos pPos, TreeConfiguration pConfig, CallbackInfo info) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             if (pLevel.isStateAtPosition(pPos, (state) -> state.is(BlockTags.DIRT))) {
                 info.cancel();
                 pBlockSetter.accept(pPos.below(i), Blocks.ROOTED_DIRT.defaultBlockState());
