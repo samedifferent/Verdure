@@ -1,0 +1,6 @@
+{
+  "parent": "verdure:block/branch",
+  "textures": {
+    "branch": "verdure:block/oak_branch"
+  }
+}

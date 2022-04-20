@@ -33,6 +33,7 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> HANGING_MOSS = registerBlock("hanging_moss", () -> new HangingMossBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().instabreak().sound(SoundType.MOSS)));
     public static final RegistryObject<Block> TALL_HANGING_MOSS = BLOCKS.register("tall_hanging_moss", () -> new TallHangingMossBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.COLOR_GREEN).noCollission().instabreak().sound(SoundType.MOSS)));
     public static final RegistryObject<Block> HUMUS = registerBlock("humus", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> OAK_BRANCH = registerBlock("oak_branch", () -> new BranchBlock(Blocks.OAK_LOG, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.5F).sound(SoundType.WOOD)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = VerdureBlocks.BLOCKS.register(name, block);
