@@ -8,6 +8,7 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class VerdureConfig {
     public static ForgeConfigSpec COMMON_CONFIG;
 
+    // RARITY-BASED FEATURE PLACEMENTS
     public static final ForgeConfigSpec.IntValue BOULDER_RARITY;
     public static final ForgeConfigSpec.IntValue SMOOTH_DIRT_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue HUMUS_PATCH_RARITY;
@@ -17,6 +18,7 @@ public class VerdureConfig {
     public static final ForgeConfigSpec.IntValue DAISY_TREE_RARITY;
     public static final ForgeConfigSpec.IntValue OAK_HOLLOW_RARITY;
 
+    // COUNT-BASED FEATURE PLACEMENTS
     public static final ForgeConfigSpec.IntValue FALLEN_LOG_NETHER_COUNT;
     public static final ForgeConfigSpec.IntValue PEBBLES_RARITY;
     public static final ForgeConfigSpec.IntValue ROCK_RARITY;
@@ -25,7 +27,11 @@ public class VerdureConfig {
     public static final ForgeConfigSpec.IntValue MUSHROOM_SHELF_UNDERGROUND_COUNT_MAX;
     public static final ForgeConfigSpec.IntValue HANGING_MOSS_COUNT;
 
+    // OTHER WORLD GENERATION SETTINGS
     public static final ForgeConfigSpec.BooleanValue GENERATE_TREE_ROOTS;
+
+    // GAMEPLAY SETTINGS
+    public static final ForgeConfigSpec.BooleanValue REMOVE_MUSHROOM_LIGHT_LEVEL;
 
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
@@ -65,6 +71,7 @@ public class VerdureConfig {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.push("Gameplay Settings");
+        REMOVE_MUSHROOM_LIGHT_LEVEL = COMMON_BUILDER.comment("Mushrooms can be placed and survive regardless of light level.").define("removeMushroomLightLevel", true);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();
