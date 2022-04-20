@@ -37,7 +37,7 @@ public class VerdureConfig {
         BOULDER_RARITY = COMMON_BUILDER.comment("Boulder rarity per chunk").defineInRange("boulderRarityPerChunk", 4, 1, 10000);
         SMOOTH_DIRT_PATCH_RARITY = COMMON_BUILDER.comment("Smooth dirt patch rarity per chunk").defineInRange("smoothDirtPatchRarityPerChunk", 7, 1, 10000);
         CLOVER_PATCH_RARITY = COMMON_BUILDER.comment("Clover patch rarity per chunk").defineInRange("cloverPatchRarityPerChunk", 5, 1, 10000);
-        DAISIES_PATCH_RARITY = COMMON_BUILDER.comment("Daisies patch rarity per chunk").defineInRange("daisiesPatchRarityPerChunk", 11, 1, 10000);
+        DAISIES_PATCH_RARITY = COMMON_BUILDER.comment("Daisies patch rarity per chunk").defineInRange("daisiesPatchRarityPerChunk", 14, 1, 10000);
         PEBBLES_RARITY = COMMON_BUILDER.comment("Pebbles rarity").defineInRange("pebblesRarityPerChunk", 2, 1, 10000);
         ROCK_RARITY = COMMON_BUILDER.comment("Rock rarity").defineInRange("rockRarityPerChunk", 2, 1, 10000);
         FALLEN_LOG_RARITY = COMMON_BUILDER.comment("Fallen log rarity per chunk").defineInRange("fallenLogRarityPerChunk", 7, 1, 10000);
