@@ -10,6 +10,7 @@ public class VerdureConfig {
 
     public static final ForgeConfigSpec.IntValue BOULDER_RARITY;
     public static final ForgeConfigSpec.IntValue SMOOTH_DIRT_PATCH_RARITY;
+    public static final ForgeConfigSpec.IntValue HUMUS_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue CLOVER_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue DAISIES_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue FALLEN_LOG_RARITY;
@@ -36,6 +37,7 @@ public class VerdureConfig {
         COMMON_BUILDER.push("Rarity-Based Feature Placements");
         BOULDER_RARITY = COMMON_BUILDER.comment("Boulder rarity per chunk").defineInRange("boulderRarityPerChunk", 4, 1, 10000);
         SMOOTH_DIRT_PATCH_RARITY = COMMON_BUILDER.comment("Smooth dirt patch rarity per chunk").defineInRange("smoothDirtPatchRarityPerChunk", 7, 1, 10000);
+        HUMUS_PATCH_RARITY = COMMON_BUILDER.comment("Humus patch rarity per chunk in the jungle").defineInRange("humusPatchRarityPerChunk", 4, 1, 10000);
         CLOVER_PATCH_RARITY = COMMON_BUILDER.comment("Clover patch rarity per chunk").defineInRange("cloverPatchRarityPerChunk", 5, 1, 10000);
         DAISIES_PATCH_RARITY = COMMON_BUILDER.comment("Daisies patch rarity per chunk").defineInRange("daisiesPatchRarityPerChunk", 14, 1, 10000);
         PEBBLES_RARITY = COMMON_BUILDER.comment("Pebbles rarity").defineInRange("pebblesRarityPerChunk", 2, 1, 10000);

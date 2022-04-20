@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "verdure:smooth_dirt"
+    "verdure:smooth_dirt",
+    "verdure:humus"
   ]
 }
