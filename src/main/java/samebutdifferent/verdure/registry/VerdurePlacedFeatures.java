@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -47,7 +48,7 @@ public class VerdurePlacedFeatures {
     public static final RegistryObject<PlacedFeature> HUMUS_PATCH = PLACED_FEATURES.register("humus_patch", () -> new PlacedFeature(VerdureConfiguredFeatures.HUMUS_PATCH.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(VerdureConfig.HUMUS_PATCH_RARITY.get()), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
     public static final RegistryObject<PlacedFeature> OAK_BRANCHES = PLACED_FEATURES.register("oak_branches", () -> new PlacedFeature(VerdureConfiguredFeatures.OAK_BRANCHES.getHolder().get(), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING))));
     public static final RegistryObject<PlacedFeature> BIRCH_BRANCHES = PLACED_FEATURES.register("birch_branches", () -> new PlacedFeature(VerdureConfiguredFeatures.BIRCH_BRANCHES.getHolder().get(), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING))));
-//    public static final RegistryObject<PlacedFeature> TREES_BIRCH_AND_OAK = PLACED_FEATURES.register("trees_birch_and_oak", () -> new PlacedFeature(VerdureConfiguredFeatures.TREES_BIRCH_AND_OAK.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1))));
+    public static final RegistryObject<PlacedFeature> TREES_BIRCH_AND_OAK = PLACED_FEATURES.register("trees_birch_and_oak", () -> new PlacedFeature(VerdureConfiguredFeatures.TREES_BIRCH_AND_OAK.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1))));
 
     public static List<PlacementModifier> worldSurfaceSquaredWithRarityFilter(int chance) {
         return List.of(RarityFilter.onAverageOnceEvery(chance), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
