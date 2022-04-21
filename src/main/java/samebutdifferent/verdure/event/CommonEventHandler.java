@@ -3,6 +3,7 @@ package samebutdifferent.verdure.event;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -20,12 +21,14 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import samebutdifferent.verdure.Verdure;
 import samebutdifferent.verdure.registry.VerdureBlocks;
 import samebutdifferent.verdure.registry.VerdurePlacedFeatures;
+import samebutdifferent.verdure.util.CodecUtils;
 
 @Mod.EventBusSubscriber(modid = Verdure.MOD_ID)
 public class CommonEventHandler {
@@ -43,6 +46,8 @@ public class CommonEventHandler {
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
                     }
                     if (location.equals(Biomes.FOREST.location())) {
+                        builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.TREES_BIRCH_AND_OAK.value()));
+                        builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.TREES_BIRCH_AND_OAK);
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES);
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW);
@@ -123,6 +128,11 @@ public class CommonEventHandler {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES_BLUE);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES_PINK);
+    }
+
+    @SubscribeEvent
+    public static void onServerStarted(ServerStartedEvent event) {
+        CodecUtils.clearCache();
     }
 
     @SubscribeEvent

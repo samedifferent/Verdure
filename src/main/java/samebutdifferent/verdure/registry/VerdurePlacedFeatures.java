@@ -3,7 +3,10 @@ package samebutdifferent.verdure.registry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.features.TreeFeatures;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -45,6 +48,9 @@ private static final BlockPredicate ROCK_PREDICATE = BlockPredicate.matchesBlock
     public static final Holder<PlacedFeature> FANCY_OAK_HOLLOW = register("fancy_oak_hollow", VerdureConfiguredFeatures.FANCY_OAK_HOLLOW, List.of(RarityFilter.onAverageOnceEvery(VerdureConfig.OAK_HOLLOW_RARITY.get()), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome()));
     public static final Holder<PlacedFeature> HANGING_MOSS = register("hanging_moss", VerdureConfiguredFeatures.HANGING_MOSS, List.of(CountPlacement.of(VerdureConfig.HANGING_MOSS_COUNT.get()), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome()));
     public static final Holder<PlacedFeature> HUMUS_PATCH = register("humus_patch", VerdureConfiguredFeatures.HUMUS_PATCH, List.of(RarityFilter.onAverageOnceEvery(VerdureConfig.HUMUS_PATCH_RARITY.get()), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+    public static final Holder<PlacedFeature> OAK_BRANCHES = register("oak_branches", VerdureConfiguredFeatures.OAK_BRANCHES, List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)));
+    public static final Holder<PlacedFeature> BIRCH_BRANCHES = register("birch_branches", VerdureConfiguredFeatures.BIRCH_BRANCHES, List.of(PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING)));
+    public static final Holder<PlacedFeature> TREES_BIRCH_AND_OAK = register("trees_birch_and_oak", VerdureConfiguredFeatures.TREES_BIRCH_AND_OAK, VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1F, 1)));
 
     private static Holder<PlacedFeature> register(String name, Holder<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
         return PlacementUtils.register(new ResourceLocation(Verdure.MOD_ID, name).toString(), feature, modifiers);

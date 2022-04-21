@@ -86,6 +86,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven { url = 'https://alcatrazescapee.jfrog.io/artifactory/mods' }
 }
 
 mixin {
@@ -100,6 +101,7 @@ mixin {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    runtimeOnly fg.deobf("com.alcatrazescapee:cyanide-forge-1.18.2:2.1.0") { transitive = false }
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta', "${mod_id}.mixins.json".toString()]

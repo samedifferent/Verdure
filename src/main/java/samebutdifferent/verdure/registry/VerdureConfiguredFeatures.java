@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -56,6 +58,9 @@ public class VerdureConfiguredFeatures {
     public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_OAK_HOLLOW = register("fancy_oak_hollow", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().decorators(List.of(new HollowLogDecorator())).build());
     public static final Holder<ConfiguredFeature<SimpleBlockConfiguration, ?>> HANGING_MOSS = register("hanging_moss", VerdureFeatures.HANGING_MOSS.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.HANGING_MOSS.get().defaultBlockState(), 1).add(VerdureBlocks.TALL_HANGING_MOSS.get().defaultBlockState(), 1))));
     public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> HUMUS_PATCH = register("humus_patch", VerdureFeatures.SMOOTH_DIRT_PATCH.get(), new DiskConfiguration(VerdureBlocks.HUMUS.get().defaultBlockState(), UniformInt.of(5, 8), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_BRANCHES = register("oak_branches", Feature.TREE, createStraightBlobTree(Blocks.OAK_LOG, Blocks.OAK_LEAVES, 5, 1, 0, 2).ignoreVines().decorators(List.of(new BranchDecorator(BlockStateProvider.simple(VerdureBlocks.OAK_BRANCH.get())))).build());
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> BIRCH_BRANCHES = register("birch_branches", Feature.TREE, createStraightBlobTree(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 5, 2, 0, 2).ignoreVines().decorators(List.of(new BranchDecorator(BlockStateProvider.simple(VerdureBlocks.BIRCH_BRANCH.get())))).build());
+    public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> TREES_BIRCH_AND_OAK = register("trees_birch_and_oak", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(VerdurePlacedFeatures.BIRCH_BRANCHES, 0.2F), new WeightedPlacedFeature(TreePlacements.FANCY_OAK_BEES_0002, 0.1F)), VerdurePlacedFeatures.OAK_BRANCHES));
 
     private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block logBlock, Block leavesBlock, int baseTrunkHeight, int heightRandA, int heightRandB, int foliageRadius) {
         return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(logBlock), new StraightTrunkPlacer(baseTrunkHeight, heightRandA, heightRandB), BlockStateProvider.simple(leavesBlock), new BlobFoliagePlacer(ConstantInt.of(foliageRadius), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1));
