@@ -1,19 +1,42 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "verdure:block/oak_branch",
-      "y": 90
-    },
-    "facing=north": {
-      "model": "verdure:block/oak_branch"
-    },
-    "facing=south": {
-      "model": "verdure:block/oak_branch",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "verdure:block/oak_branch",
-      "y": 270
-    }
+    "facing=east": [
+      {
+        "model": "verdure:block/oak_branch",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/oak_branch1",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "verdure:block/oak_branch"
+      },
+      {
+        "model": "verdure:block/oak_branch1"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "verdure:block/oak_branch",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/oak_branch1",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "verdure:block/oak_branch",
+        "y": 270
+      },
+      {
+        "model": "verdure:block/oak_branch1",
+        "y": 270
+      }
+    ]
   }
 }
