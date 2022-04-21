@@ -67,7 +67,7 @@ public class VerdureConfig {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.push("Other World Generation Settings");
-        GENERATE_TREE_ROOTS = COMMON_BUILDER.comment("Naturally generated trees will spawn with 2 blocks of rooted dirt underneath").define("generateTreeRoots", true);
+        GENERATE_TREE_ROOTS = COMMON_BUILDER.comment("Trees will spawn with a block of rooted dirt underneath, rather than regular dirt.").define("generateTreeRoots", true);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.push("Gameplay Settings");

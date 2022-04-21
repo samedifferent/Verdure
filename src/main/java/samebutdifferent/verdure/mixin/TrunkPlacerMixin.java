@@ -6,6 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,12 +24,8 @@ public class TrunkPlacerMixin {
     @Inject(method = "setDirtAt", at = @At(value = "HEAD"), cancellable = true)
     private static void onSetDirtAt(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, BlockPos pPos, TreeConfiguration pConfig, CallbackInfo info) {
         if (VerdureConfig.GENERATE_TREE_ROOTS.get()) {
-            for (int i = 0; i < 2; i++) {
-                if (pLevel.isStateAtPosition(pPos.below(i), (state) -> state.is(BlockTags.DIRT))) {
-                    pBlockSetter.accept(pPos.below(i), Blocks.ROOTED_DIRT.defaultBlockState());
-                    info.cancel();
-                }
-            }
+            info.cancel();
+            pBlockSetter.accept(pPos, Blocks.ROOTED_DIRT.defaultBlockState());
         }
     }
 }

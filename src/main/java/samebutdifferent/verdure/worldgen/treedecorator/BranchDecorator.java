@@ -38,7 +38,7 @@ public class BranchDecorator extends TreeDecorator {
             Direction xRand = pRandom.nextBoolean() ? Direction.EAST : Direction.WEST;
             BlockPos posFirst = exposedLogs.get(exposedLogs.size() - 1);
             BlockPos posSecond = exposedLogs.get(exposedLogs.size() - 2);
-            if (exposedLogs.size() < 5) {
+            if (exposedLogs.size() < 4) {
                 Direction direction = pRandom.nextBoolean() ? xRand : zRand;
                 if (Feature.isAir(pLevel, posFirst.relative(direction))) {
                     pBlockSetter.accept(posFirst.relative(direction), this.provider.getState(pRandom, posFirst).setValue(HorizontalDirectionalBlock.FACING, direction));

@@ -34,6 +34,8 @@ public class Verdure {
         VerdureBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         VerdureFeatures.FEATURES.register(bus);
         VerdureTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(bus);
+        VerdureConfiguredFeatures.CONFIGURED_FEATURES.register(bus);
+        VerdurePlacedFeatures.PLACED_FEATURES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

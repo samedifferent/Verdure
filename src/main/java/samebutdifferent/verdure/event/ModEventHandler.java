@@ -11,8 +11,5 @@ import samebutdifferent.verdure.registry.VerdurePlacedFeatures;
 public class ModEventHandler {
     @SubscribeEvent
     public static void init(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            VerdureConfiguredFeatures.load();
-        });
     }
 }
