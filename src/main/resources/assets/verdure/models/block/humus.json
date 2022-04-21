@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "verdure:block/humus"
+    "top": "verdure:block/humus_top",
+    "bottom": "minecraft:block/dirt",
+    "side": "verdure:block/humus_side"
   }
 }

@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import samebutdifferent.verdure.Verdure;
+import samebutdifferent.verdure.worldgen.treedecorator.BranchDecorator;
 import samebutdifferent.verdure.worldgen.treedecorator.DaisiesDecorator;
 import samebutdifferent.verdure.worldgen.treedecorator.HollowLogDecorator;
 
@@ -48,12 +50,16 @@ public class VerdureConfiguredFeatures {
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> FALLEN_LOG = register("fallen_log", VerdureFeatures.FALLEN_LOG.get(), FeatureConfiguration.NONE);
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> MUSHROOM_SHELF = register("mushroom_shelf", VerdureFeatures.MUSHROOM_SHELF.get(), FeatureConfiguration.NONE);
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> UNDERGROUND_MUSHROOM_SHELF = register("underground_mushroom_shelf", VerdureFeatures.UNDERGROUND_MUSHROOM_SHELF.get(), FeatureConfiguration.NONE);
-    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_DAISIES = register("oak_daisies", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
-    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> BIRCH_DAISIES = register("birch_daisies", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.BIRCH_LOG), new StraightTrunkPlacer(5, 2, 0), BlockStateProvider.simple(Blocks.BIRCH_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
-    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_HOLLOW = register("oak_hollow", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new StraightTrunkPlacer(5, 1, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().decorators(List.of(new HollowLogDecorator())).build());
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_DAISIES = register("oak_daisies", Feature.TREE, createStraightBlobTree(Blocks.OAK_LOG, Blocks.OAK_LEAVES, 4, 2, 0, 2).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> BIRCH_DAISIES = register("birch_daisies", Feature.TREE, createStraightBlobTree(Blocks.BIRCH_LOG, Blocks.BIRCH_LEAVES, 5, 2, 0, 2).ignoreVines().decorators(List.of(new DaisiesDecorator())).build());
+    public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OAK_HOLLOW = register("oak_hollow", Feature.TREE, createStraightBlobTree(Blocks.OAK_LOG, Blocks.OAK_LEAVES, 5, 1, 0, 2).ignoreVines().decorators(List.of(new HollowLogDecorator())).build());
     public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_OAK_HOLLOW = register("fancy_oak_hollow", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines().decorators(List.of(new HollowLogDecorator())).build());
     public static final Holder<ConfiguredFeature<SimpleBlockConfiguration, ?>> HANGING_MOSS = register("hanging_moss", VerdureFeatures.HANGING_MOSS.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(VerdureBlocks.HANGING_MOSS.get().defaultBlockState(), 1).add(VerdureBlocks.TALL_HANGING_MOSS.get().defaultBlockState(), 1))));
     public static final Holder<ConfiguredFeature<DiskConfiguration, ?>> HUMUS_PATCH = register("humus_patch", VerdureFeatures.SMOOTH_DIRT_PATCH.get(), new DiskConfiguration(VerdureBlocks.HUMUS.get().defaultBlockState(), UniformInt.of(5, 8), 1, List.of(Blocks.DIRT.defaultBlockState(), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.PODZOL.defaultBlockState(), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.MYCELIUM.defaultBlockState())));
+
+    private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block logBlock, Block leavesBlock, int baseTrunkHeight, int heightRandA, int heightRandB, int foliageRadius) {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(logBlock), new StraightTrunkPlacer(baseTrunkHeight, heightRandA, heightRandB), BlockStateProvider.simple(leavesBlock), new BlobFoliagePlacer(ConstantInt.of(foliageRadius), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1));
+    }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(String name, F feature, FC configuration) {
         return BuiltinRegistries.registerExact(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Verdure.MOD_ID, name).toString(), new ConfiguredFeature<>(feature, configuration));
