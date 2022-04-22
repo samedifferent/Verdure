@@ -13,7 +13,7 @@ import samebutdifferent.verdure.worldgen.feature.*;
 public class VerdureFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Verdure.MOD_ID);
 
-    public static final RegistryObject<SmoothDirtPatchFeature> SMOOTH_DIRT_PATCH = FEATURES.register("smooth_dirt_patch", () -> new SmoothDirtPatchFeature(DiskConfiguration.CODEC));
+    public static final RegistryObject<DitheredDiskFeature> DITHERED_DISK = FEATURES.register("dithered_disk", () -> new DitheredDiskFeature(DiskConfiguration.CODEC));
     public static final RegistryObject<FallenLogFeature> FALLEN_LOG = FEATURES.register("fallen_log", () -> new FallenLogFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<MushroomShelfFeature> MUSHROOM_SHELF = FEATURES.register("mushroom_shelf", () -> new MushroomShelfFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<UndergroundMushroomShelfFeature> UNDERGROUND_MUSHROOM_SHELF = FEATURES.register("underground_mushroom_shelf", () -> new UndergroundMushroomShelfFeature(NoneFeatureConfiguration.CODEC));
