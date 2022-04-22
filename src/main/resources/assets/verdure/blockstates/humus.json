@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "verdure:block/humus"
-    }
+    "": [
+      {
+        "model": "verdure:block/humus"
+      },
+      {
+        "model": "verdure:block/humus",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/humus",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/humus",
+        "y": 270
+      }
+    ]
   }
 }
