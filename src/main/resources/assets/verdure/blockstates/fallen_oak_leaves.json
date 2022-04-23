@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "verdure:block/fallen_oak_leaves"
+      },
+      {
+        "model": "verdure:block/fallen_oak_leaves",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/fallen_oak_leaves",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/fallen_oak_leaves",
+        "y": 270
+      }
+    ]
+  }
+}

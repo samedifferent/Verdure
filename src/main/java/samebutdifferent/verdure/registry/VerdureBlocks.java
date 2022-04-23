@@ -37,6 +37,7 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> OAK_BRANCH = registerBlock("oak_branch", () -> new BranchBlock(Blocks.OAK_LOG, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> BIRCH_BRANCH = registerBlock("birch_branch", () -> new BranchBlock(Blocks.BIRCH_LOG, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WALL_ROOTS = BLOCKS.register("wall_roots", () -> new WallRootsBlock(BlockBehaviour.Properties.copy(Blocks.HANGING_ROOTS)));
+    public static final RegistryObject<Block> FALLEN_OAK_LEAVES = registerBlock("fallen_oak_leaves", () -> new FallenLeavesBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0F).sound(SoundType.GRASS).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = VerdureBlocks.BLOCKS.register(name, block);
