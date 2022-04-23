@@ -26,6 +26,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import samebutdifferent.verdure.Verdure;
+import samebutdifferent.verdure.block.WallRootsBlock;
 import samebutdifferent.verdure.registry.VerdureBlocks;
 import samebutdifferent.verdure.registry.VerdureConfig;
 import samebutdifferent.verdure.registry.VerdurePlacedFeatures;
@@ -154,20 +155,28 @@ public class CommonEventHandler {
                 BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
                 if (level.isEmptyBlock(pos)) {
                     if (stack.is(Items.BROWN_MUSHROOM)) {
-                        placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
+                        placeBlock(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
                     } else if (stack.is(Items.RED_MUSHROOM)) {
-                        placeMushroomShelf(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+                        placeBlock(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
                     }
+                }
+            }
+        }
+        if (WallRootsBlock.canAttachTo(level, event.getPos(), event.getFace()) && event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
+            BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
+            if (level.isEmptyBlock(pos)) {
+                if (stack.is(Items.HANGING_ROOTS)) {
+                    placeBlock(event, player, level, pos, stack, VerdureBlocks.WALL_ROOTS.get());
                 }
             }
         }
     }
 
-    private static void placeMushroomShelf(PlayerInteractEvent.RightClickBlock event, Player player, Level level, BlockPos pos, ItemStack stack, Block mushroomShelf) {
-        BlockState state = mushroomShelf.getStateForPlacement(new BlockPlaceContext(player, event.getHand(), stack, event.getHitVec()));
+    private static void placeBlock(PlayerInteractEvent.RightClickBlock event, Player player, Level level, BlockPos pos, ItemStack stack, Block block) {
+        BlockState state = block.getStateForPlacement(new BlockPlaceContext(player, event.getHand(), stack, event.getHitVec()));
         level.setBlockAndUpdate(pos, state);
         player.swing(event.getHand());
-        mushroomShelf.defaultBlockState().getBlock().setPlacedBy(level, pos, state, player, stack);
+        block.defaultBlockState().getBlock().setPlacedBy(level, pos, state, player, stack);
         if (player instanceof ServerPlayer) {
             CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
         }

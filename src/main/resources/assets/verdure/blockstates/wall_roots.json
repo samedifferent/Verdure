@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "verdure:block/wall_roots",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "verdure:block/wall_roots",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "verdure:block/wall_roots"
+    },
+    "facing=west": {
+      "model": "verdure:block/wall_roots",
+      "y": 90
+    }
+  }
+}

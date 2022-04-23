@@ -18,10 +18,10 @@ import samebutdifferent.verdure.registry.VerdureBlocks;
 
 public class MushroomShelfBlock extends Block {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 3.0D, 16.0D, 16.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(13.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 3.0D);
-    protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 13.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 5.0D, 16.0D, 16.0D);
+    protected static final VoxelShape WEST_AABB = Block.box(11.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 5.0D);
+    protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 11.0D, 16.0D, 16.0D, 16.0D);
 
     public MushroomShelfBlock(Properties properties) {
         super(properties);
