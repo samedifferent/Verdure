@@ -38,7 +38,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void registerBlockColors(ColorHandlerEvent.Block event) {
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null && pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(), VerdureBlocks.FALLEN_OAK_LEAVES.get());
+        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null && pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(), VerdureBlocks.FALLEN_OAK_LEAVES.get(), VerdureBlocks.OAK_BRANCH.get());
     }
 
     @SubscribeEvent
