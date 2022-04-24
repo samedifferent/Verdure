@@ -1,6 +1,5 @@
 package samebutdifferent.verdure.registry;
 
-import ca.weblite.objc.Proxy;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;

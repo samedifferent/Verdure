@@ -7,7 +7,6 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -146,11 +145,11 @@ public class CommonEventHandler {
     }
 
     @SubscribeEvent
-    public static void onPlace(PlayerInteractEvent.RightClickBlock event) {
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getPlayer();
         Level level = player.level;
         ItemStack stack = event.getItemStack();
-        if (level.getBlockState(event.getPos()).is(BlockTags.LOGS) || level.getBlockState(event.getPos()).is(BlockTags.DIRT) || level.getBlockState(event.getPos()).is(BlockTags.STONE_ORE_REPLACEABLES)) {
+        if (WallRootsBlock.canAttachTo(level, event.getPos(), event.getFace())) {
             if (event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
                 BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
                 if (level.isEmptyBlock(pos)) {
@@ -158,15 +157,9 @@ public class CommonEventHandler {
                         placeBlock(event, player, level, pos, stack, VerdureBlocks.BROWN_MUSHROOM_SHELF.get());
                     } else if (stack.is(Items.RED_MUSHROOM)) {
                         placeBlock(event, player, level, pos, stack, VerdureBlocks.RED_MUSHROOM_SHELF.get());
+                    } else if (stack.is(Items.HANGING_ROOTS)) {
+                        placeBlock(event, player, level, pos, stack, VerdureBlocks.WALL_ROOTS.get());
                     }
-                }
-            }
-        }
-        if (WallRootsBlock.canAttachTo(level, event.getPos(), event.getFace()) && event.getFace().getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
-            BlockPos pos = event.getHitVec().getBlockPos().relative(event.getFace());
-            if (level.isEmptyBlock(pos)) {
-                if (stack.is(Items.HANGING_ROOTS)) {
-                    placeBlock(event, player, level, pos, stack, VerdureBlocks.WALL_ROOTS.get());
                 }
             }
         }
@@ -174,19 +167,20 @@ public class CommonEventHandler {
 
     private static void placeBlock(PlayerInteractEvent.RightClickBlock event, Player player, Level level, BlockPos pos, ItemStack stack, Block block) {
         BlockState state = block.getStateForPlacement(new BlockPlaceContext(player, event.getHand(), stack, event.getHitVec()));
-        level.setBlockAndUpdate(pos, state);
-        player.swing(event.getHand());
-        block.defaultBlockState().getBlock().setPlacedBy(level, pos, state, player, stack);
-        if (player instanceof ServerPlayer) {
-            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
-        }
-        level.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
-        SoundType soundtype = state.getSoundType(level, pos, player);
-        level.playSound(player, pos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-        if (!player.getAbilities().instabuild) {
-            stack.shrink(1);
+        if (state != null && block.canSurvive(state, level, pos)) {
+            level.setBlockAndUpdate(pos, state);
+            player.swing(event.getHand());
+            block.defaultBlockState().getBlock().setPlacedBy(level, pos, state, player, stack);
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, pos, stack);
+            }
+            level.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
+            SoundType soundtype = state.getSoundType(level, pos, player);
+            level.playSound(player, pos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
         }
     }
-
 
 }
