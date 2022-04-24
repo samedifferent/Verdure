@@ -7,6 +7,7 @@ import net.minecraftforge.registries.RegistryObject;
 import samebutdifferent.verdure.Verdure;
 import samebutdifferent.verdure.worldgen.treedecorator.BranchDecorator;
 import samebutdifferent.verdure.worldgen.treedecorator.DaisiesDecorator;
+import samebutdifferent.verdure.worldgen.treedecorator.FallenLeavesDecorator;
 import samebutdifferent.verdure.worldgen.treedecorator.HollowLogDecorator;
 
 public class VerdureTreeDecoratorTypes {
@@ -15,5 +16,6 @@ public class VerdureTreeDecoratorTypes {
     public static final RegistryObject<TreeDecoratorType<DaisiesDecorator>> DAISIES = TREE_DECORATOR_TYPES.register("daisies", () -> new TreeDecoratorType<>(DaisiesDecorator.CODEC));
     public static final RegistryObject<TreeDecoratorType<HollowLogDecorator>> HOLLOW_LOG = TREE_DECORATOR_TYPES.register("hollow_log", () -> new TreeDecoratorType<>(HollowLogDecorator.CODEC));
     public static final RegistryObject<TreeDecoratorType<BranchDecorator>> BRANCH = TREE_DECORATOR_TYPES.register("branch", () -> new TreeDecoratorType<>(BranchDecorator.CODEC));
+    public static final RegistryObject<TreeDecoratorType<FallenLeavesDecorator>> FALLEN_LEAVES = TREE_DECORATOR_TYPES.register("fallen_leaves", () -> new TreeDecoratorType<>(FallenLeavesDecorator.CODEC));
 
 }
