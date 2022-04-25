@@ -50,7 +50,7 @@ public class CommonEventHandler {
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS.getHolder().get());
                     }
                     if (location.equals(Biomes.FOREST.location())) {
-                        if (VerdureConfig.GENERATE_TREE_BRANCHES.get()) {
+                        if (VerdureConfig.GENERATE_TREE_BRANCHES.get() || VerdureConfig.FALLEN_LEAVES_CHANCE.get() > 0) {
                             builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.TREES_BIRCH_AND_OAK.value()));
                             builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.TREES_BIRCH_AND_OAK.getHolder().get());
                         }

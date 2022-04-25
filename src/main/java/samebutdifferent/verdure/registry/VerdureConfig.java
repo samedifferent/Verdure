@@ -29,6 +29,7 @@ public class VerdureConfig {
     // OTHER WORLD GENERATION SETTINGS
     public static final ForgeConfigSpec.BooleanValue GENERATE_TREE_ROOTS;
     public static final ForgeConfigSpec.BooleanValue GENERATE_TREE_BRANCHES;
+    public static final ForgeConfigSpec.DoubleValue FALLEN_LEAVES_CHANCE;
     public static final ForgeConfigSpec.BooleanValue GENERATE_DARK_OAK_HUMUS;
 
     // GAMEPLAY SETTINGS
@@ -70,6 +71,7 @@ public class VerdureConfig {
         COMMON_BUILDER.push("Other World Generation Settings");
         GENERATE_TREE_ROOTS = COMMON_BUILDER.comment("Trees will spawn with a block of rooted dirt underneath, rather than regular dirt.").define("generateTreeRoots", true);
         GENERATE_TREE_BRANCHES = COMMON_BUILDER.comment("Trees in forests will spawn with 2D branch blocks.").define("generateTreeBranches", true);
+        FALLEN_LEAVES_CHANCE = COMMON_BUILDER.comment("Chance that fallen leaves will generate under a tree (in percentage). Set to 0 to disable this.").defineInRange("fallenLeavesChance", 0.15, 0.0, 1.0);
         GENERATE_DARK_OAK_HUMUS = COMMON_BUILDER.comment("Dark Oak trees will spawn with a patch of humus underneath.").define("generateDarkOakHumus", true);
         COMMON_BUILDER.pop();
 

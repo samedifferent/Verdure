@@ -10,6 +10,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import samebutdifferent.verdure.registry.VerdureConfig;
 import samebutdifferent.verdure.registry.VerdureTreeDecoratorTypes;
 
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class BranchDecorator extends TreeDecorator {
-    public static final Codec<BranchDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("branch").xmap(BranchDecorator::new, (decorator) -> decorator.provider).codec();
-    private final BlockStateProvider provider;
+    public static final Codec<BranchDecorator> CODEC = BlockState.CODEC.fieldOf("branch").xmap(BranchDecorator::new, (decorator) -> decorator.state).codec();
+    private final BlockState state;
 
-    public BranchDecorator(BlockStateProvider provider) {
-        this.provider = provider;
+    public BranchDecorator(BlockState state) {
+        this.state = state;
     }
 
     @Override
@@ -31,7 +32,7 @@ public class BranchDecorator extends TreeDecorator {
 
     @Override
     public void place(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, List<BlockPos> pLogPositions, List<BlockPos> pLeafPositions) {
-        if (!pLeafPositions.isEmpty()) {
+        if (!pLeafPositions.isEmpty() && VerdureConfig.GENERATE_TREE_BRANCHES.get()) {
             int lowestLeafY = pLeafPositions.get(0).getY();
             List<BlockPos> exposedLogs = pLogPositions.stream().filter(blockPos -> blockPos.getY() < lowestLeafY).toList();
             Direction zRand = pRandom.nextBoolean() ? Direction.NORTH : Direction.SOUTH;
@@ -42,14 +43,14 @@ public class BranchDecorator extends TreeDecorator {
             } else if (exposedLogs.size() < 4) {
                 Direction direction = pRandom.nextBoolean() ? xRand : zRand;
                 if (Feature.isAir(pLevel, posFirst.relative(direction))) {
-                    pBlockSetter.accept(posFirst.relative(direction), this.provider.getState(pRandom, posFirst).setValue(HorizontalDirectionalBlock.FACING, direction));
+                    pBlockSetter.accept(posFirst.relative(direction), this.state.setValue(HorizontalDirectionalBlock.FACING, direction));
                 }
             } else {
                 if (Feature.isAir(pLevel, posFirst.relative(xRand))) {
-                    pBlockSetter.accept(posFirst.relative(xRand), this.provider.getState(pRandom, posFirst).setValue(HorizontalDirectionalBlock.FACING, xRand));
+                    pBlockSetter.accept(posFirst.relative(xRand), this.state.setValue(HorizontalDirectionalBlock.FACING, xRand));
                 }
                 if (Feature.isAir(pLevel, posSecond.relative(zRand))) {
-                    pBlockSetter.accept(posSecond.relative(zRand), this.provider.getState(pRandom, posSecond).setValue(HorizontalDirectionalBlock.FACING, zRand));
+                    pBlockSetter.accept(posSecond.relative(zRand), this.state.setValue(HorizontalDirectionalBlock.FACING, zRand));
                 }
             }
         }
