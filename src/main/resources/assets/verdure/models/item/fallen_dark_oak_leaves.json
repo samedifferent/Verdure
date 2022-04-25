@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "verdure:block/fallen_dark_oak_leaves"
+  }
+}

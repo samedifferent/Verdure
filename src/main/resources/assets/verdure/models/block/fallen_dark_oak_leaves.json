@@ -1,6 +1,6 @@
 {
 	"parent": "verdure:block/fallen_leaves",
 	"textures": {
-		"leaves": "verdure:block/fallen_oak_leaves"
+		"leaves": "verdure:block/fallen_dark_oak_leaves"
 	}
 }

@@ -19,6 +19,11 @@
   "block.verdure.birch_branch": "Birch Branch",
   "block.verdure.wall_roots": "Wall Roots",
   "block.verdure.fallen_oak_leaves": "Fallen Oak Leaves",
+  "block.verdure.fallen_acacia_leaves": "Fallen Acacia Leaves",
+  "block.verdure.fallen_birch_leaves": "Fallen Birch Leaves",
+  "block.verdure.fallen_dark_oak_leaves": "Fallen Dark Oak Leaves",
+  "block.verdure.fallen_jungle_leaves": "Fallen Jungle Leaves",
+  "block.verdure.fallen_spruce_leaves": "Fallen Spruce Leaves",
   "item.verdure.bird_spawn_egg": "Bird Spawn Egg",
   "container.verdure.hollow_log": "Tree Hollow",
   "itemGroup.verdure": "Verdure"

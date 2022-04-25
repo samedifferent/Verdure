@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "verdure:block/fallen_birch_leaves"
+      },
+      {
+        "model": "verdure:block/fallen_birch_leaves",
+        "y": 90
+      },
+      {
+        "model": "verdure:block/fallen_birch_leaves",
+        "y": 180
+      },
+      {
+        "model": "verdure:block/fallen_birch_leaves",
+        "y": 270
+      }
+    ]
+  }
+}
