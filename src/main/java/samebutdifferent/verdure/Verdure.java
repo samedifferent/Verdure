@@ -31,6 +31,7 @@ public class Verdure {
 
         VerdureBlocks.BLOCKS.register(bus);
         VerdureItems.ITEMS.register(bus);
+        VerdureEntityTypes.ENTITY_TYPES.register(bus);
         VerdureBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         VerdureFeatures.FEATURES.register(bus);
         VerdureTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(bus);

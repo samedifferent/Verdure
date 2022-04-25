@@ -2,10 +2,7 @@ package samebutdifferent.verdure.registry;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.features.TreeFeatures;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.valueproviders.ConstantInt;

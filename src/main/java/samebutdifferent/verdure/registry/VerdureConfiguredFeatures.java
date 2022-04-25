@@ -1,10 +1,7 @@
 package samebutdifferent.verdure.registry;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
@@ -24,15 +21,11 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
-import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
