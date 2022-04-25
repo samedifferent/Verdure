@@ -19,6 +19,7 @@
   "block.verdure.birch_branch": "Birch Branch",
   "block.verdure.wall_roots": "Wall Roots",
   "block.verdure.fallen_oak_leaves": "Fallen Oak Leaves",
+  "item.verdure.bird_spawn_egg": "Bird Spawn Egg",
   "container.verdure.hollow_log": "Tree Hollow",
   "itemGroup.verdure": "Verdure"
 }

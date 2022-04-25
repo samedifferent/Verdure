@@ -67,18 +67,26 @@ public class BirdModel extends HierarchicalModel<Bird> {
 
     @Override
     public void setupAnim(Bird pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+        this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
+        this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+        this.head.zRot = 0.0F;
+        this.head.x = 0.0F;
+        this.body.x = 0.0F;
+        this.tail.x = 0.0F;
+        this.rightWing.x = -1.5F;
+        this.leftWing.x = 1.5F;
         if (pEntity.isFlying()) {
-            float f2 = pAgeInTicks * 0.3F;
-            this.head.y = 15.69F + f2;
+            float ticks = pAgeInTicks * 0.3F;
+            this.head.y = 15.69F + ticks;
             this.tail.xRot = 1.015F + Mth.cos(pLimbSwing * 0.6662F) * 0.3F * pLimbSwingAmount;
-            this.tail.y = 21.07F + f2;
-            this.body.y = 16.5F + f2;
+            this.tail.y = 21.07F + ticks;
+            this.body.y = 16.5F + ticks;
             this.leftWing.zRot = -0.0873F - pAgeInTicks;
-            this.leftWing.y = 16.94F + f2;
+            this.leftWing.y = 16.94F + ticks;
             this.rightWing.zRot = 0.0873F + pAgeInTicks;
-            this.rightWing.y = 16.94F + f2;
-            this.leftLeg.y = 22.0F + f2;
-            this.rightLeg.y = 22.0F + f2;
+            this.rightWing.y = 16.94F + ticks;
+            this.leftLeg.y = 22.0F + ticks;
+            this.rightLeg.y = 22.0F + ticks;
         } else {
             this.leftLeg.xRot += Mth.cos(pLimbSwing * 0.6662F) * 1.4F * pLimbSwingAmount;
             this.rightLeg.xRot += Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 1.4F * pLimbSwingAmount;
