@@ -25,7 +25,7 @@ public class DarkOakTreeGrowerMixin extends AbstractMegaTreeGrower {
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredMegaFeature(Random random) {
         if (VerdureConfig.GENERATE_DARK_OAK_HUMUS.get()) {
-            return VerdureConfiguredFeatures.DARK_OAK.getHolder().get();
+            return VerdureConfiguredFeatures.DARK_OAK_NO_LEAVES.getHolder().get();
         } else {
             return TreeFeatures.DARK_OAK;
         }

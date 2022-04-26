@@ -3,6 +3,7 @@ package samebutdifferent.verdure.event;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -29,6 +31,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegistryObject;
 import samebutdifferent.verdure.Verdure;
 import samebutdifferent.verdure.block.WallRootsBlock;
 import samebutdifferent.verdure.registry.VerdureBlocks;
@@ -48,15 +51,18 @@ public class CommonEventHandler {
         if (location != null) {
             switch (event.getCategory()) {
                 case FOREST -> {
-                    if (location.equals(Biomes.BIRCH_FOREST.location()) || location.equals(Biomes.OLD_GROWTH_BIRCH_FOREST.location())) {
+                    if (location.equals(Biomes.BIRCH_FOREST.location())) {
+                        replaceTrees(event, location, VegetationPlacements.TREES_BIRCH, VerdurePlacedFeatures.TREES_BIRCH);
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES.getHolder().get());
+                        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS.getHolder().get());
+                    }
+                    if (location.equals(Biomes.OLD_GROWTH_BIRCH_FOREST.location())) {
+                        replaceTrees(event, location, VegetationPlacements.BIRCH_TALL, VerdurePlacedFeatures.BIRCH_TALL);
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES.getHolder().get());
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS.getHolder().get());
                     }
                     if (location.equals(Biomes.FOREST.location())) {
-                        if (VerdureConfig.GENERATE_TREE_BRANCHES.get() || VerdureConfig.FALLEN_LEAVES_CHANCE.get() > 0) {
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.TREES_BIRCH_AND_OAK.value()));
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.TREES_BIRCH_AND_OAK.getHolder().get());
-                        }
+                        replaceTrees(event, location, VegetationPlacements.TREES_BIRCH_AND_OAK, VerdurePlacedFeatures.TREES_BIRCH_AND_OAK);
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES.getHolder().get());
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES.getHolder().get());
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW.getHolder().get());
@@ -68,11 +74,8 @@ public class CommonEventHandler {
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW.getHolder().get());
                         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FANCY_OAK_HOLLOW.getHolder().get());
                     }
-                    if (location.equals(Biomes.DARK_FOREST.location())) {
-                        if (VerdureConfig.GENERATE_DARK_OAK_HUMUS.get()) {
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.DARK_FOREST_VEGETATION.value()));
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.DARK_FOREST_VEGETATION.getHolder().get());
-                        }
+                    if (VerdureConfig.GENERATE_DARK_OAK_HUMUS.get()) {
+                        replaceTrees(event, Biomes.DARK_FOREST.location(), VegetationPlacements.DARK_FOREST_VEGETATION, VerdurePlacedFeatures.DARK_FOREST_VEGETATION);
                     }
                     builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_STONE.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH.getHolder().get());
@@ -89,6 +92,9 @@ public class CommonEventHandler {
                     builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE.getHolder().get());
                 }
                 case JUNGLE -> {
+                    replaceTrees(event, Biomes.SPARSE_JUNGLE.location(), VegetationPlacements.TREES_SPARSE_JUNGLE, VerdurePlacedFeatures.TREES_SPARSE_JUNGLE);
+                    replaceTrees(event, Biomes.JUNGLE.location(), VegetationPlacements.TREES_JUNGLE, VerdurePlacedFeatures.TREES_JUNGLE);
+                    replaceTrees(event, Biomes.BAMBOO_JUNGLE.location(), VegetationPlacements.TREES_JUNGLE, VerdurePlacedFeatures.TREES_JUNGLE);
                     builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG.getHolder().get());
@@ -96,19 +102,18 @@ public class CommonEventHandler {
                     addGrassyAreaFeatures(builder);
                 }
                 case TAIGA -> {
-                    if (location.equals(Biomes.TAIGA.location())) {
+                    if (location.equals(Biomes.TAIGA.location()) || location.equals(Biomes.SNOWY_TAIGA.location())) {
                         builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_DIORITE.getHolder().get());
-                        if (VerdureConfig.FALLEN_LEAVES_CHANCE.get() > 0) {
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.TREES_TAIGA.value()));
-                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.TREES_TAIGA.getHolder().get());
-                        }
                     }
+                    replaceTrees(event, Biomes.TAIGA.location(), VegetationPlacements.TREES_TAIGA, VerdurePlacedFeatures.TREES_TAIGA);
                     builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF.getHolder().get());
                     addGrassyAreaFeatures(builder);
                 }
                 case SAVANNA -> {
+                    replaceTrees(event, Biomes.SAVANNA.location(), VegetationPlacements.TREES_SAVANNA, VerdurePlacedFeatures.TREES_SAVANNA);
+                    replaceTrees(event, Biomes.WINDSWEPT_SAVANNA.location(), VegetationPlacements.TREES_WINDSWEPT_SAVANNA, VerdurePlacedFeatures.TREES_WINDSWEPT_SAVANNA);
                     builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_GRANITE.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA.getHolder().get());
@@ -139,6 +144,18 @@ public class CommonEventHandler {
             }
         }
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.UNDERGROUND_MUSHROOM_SHELF.getHolder().get());
+    }
+
+    private static void replaceTrees(BiomeLoadingEvent event, ResourceLocation biomeLocation, Holder<PlacedFeature> originalFeature, RegistryObject<PlacedFeature> replacementFeature) {
+        BiomeGenerationSettingsBuilder builder = event.getGeneration();
+        ResourceLocation location = event.getName();
+        if (location != null && location.equals(biomeLocation)) {
+            if (VerdureConfig.GENERATE_TREE_BRANCHES.get() || VerdureConfig.FALLEN_LEAVES_CHANCE.get() > 0) {
+                builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), originalFeature.value()));
+                builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(replacementFeature.getHolder().get());
+                Verdure.LOGGER.debug("Replaced " + originalFeature.unwrapKey().get().location() + " in " + location + " with " + replacementFeature.getId());
+            }
+        }
     }
 
     private static void addGrassyAreaFeatures(BiomeGenerationSettingsBuilder builder) {
