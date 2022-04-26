@@ -96,8 +96,12 @@ public class CommonEventHandler {
                     addGrassyAreaFeatures(builder);
                 }
                 case TAIGA -> {
-                    if (!location.equals(Biomes.OLD_GROWTH_PINE_TAIGA.location()) || !location.equals(Biomes.OLD_GROWTH_SPRUCE_TAIGA.location())) {
+                    if (location.equals(Biomes.TAIGA.location())) {
                         builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_DIORITE.getHolder().get());
+                        if (VerdureConfig.FALLEN_LEAVES_CHANCE.get() > 0) {
+                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(placedFeatureSupplier -> CodecUtils.serializeAndCompareFeature(placedFeatureSupplier.value(), VegetationPlacements.TREES_TAIGA.value()));
+                            builder.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(VerdurePlacedFeatures.TREES_TAIGA.getHolder().get());
+                        }
                     }
                     builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH.getHolder().get());
                     builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG.getHolder().get());
