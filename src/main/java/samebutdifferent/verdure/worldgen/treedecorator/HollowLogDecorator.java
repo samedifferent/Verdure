@@ -21,7 +21,7 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class HollowLogDecorator extends TreeDecorator {
-    public static final Codec<HollowLogDecorator> CODEC;
+    public static final Codec<HollowLogDecorator> CODEC = Codec.unit(() -> HollowLogDecorator.INSTANCE);
     public static final HollowLogDecorator INSTANCE = new HollowLogDecorator();
 
     @Override
@@ -37,11 +37,5 @@ public class HollowLogDecorator extends TreeDecorator {
         pBlockSetter.accept(pos, VerdureBlocks.HOLLOW_LOG.get().defaultBlockState().setValue(HollowLogBlock.FACING, direction));
 
         RandomizableContainerBlockEntity.setLootTable((BlockGetter) pLevel, pRandom, pos, new ResourceLocation(Verdure.MOD_ID, "chests/hollow_log"));
-    }
-
-    static {
-        CODEC = Codec.unit(() -> {
-            return INSTANCE;
-        });
     }
 }

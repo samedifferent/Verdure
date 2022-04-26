@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class DaisiesDecorator extends TreeDecorator {
-    public static final Codec<DaisiesDecorator> CODEC;
+    public static final Codec<DaisiesDecorator> CODEC = Codec.unit(() -> DaisiesDecorator.INSTANCE);
     public static final DaisiesDecorator INSTANCE = new DaisiesDecorator();
 
     @Override
@@ -41,11 +41,5 @@ public class DaisiesDecorator extends TreeDecorator {
                 }
             }
         }));
-    }
-
-    static {
-        CODEC = Codec.unit(() -> {
-            return INSTANCE;
-        });
     }
 }
