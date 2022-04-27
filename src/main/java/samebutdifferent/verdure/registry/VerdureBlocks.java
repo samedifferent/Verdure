@@ -40,7 +40,7 @@ public class VerdureBlocks {
     public static final RegistryObject<Block> FALLEN_ACACIA_LEAVES = registerBlock("fallen_acacia_leaves", () -> new FallenLeavesBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0F).sound(SoundType.GRASS).noOcclusion()));
     public static final RegistryObject<Block> FALLEN_DARK_OAK_LEAVES = registerBlock("fallen_dark_oak_leaves", () -> new FallenLeavesBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0F).sound(SoundType.GRASS).noOcclusion()));
     public static final RegistryObject<Block> OAK_BRANCH = registerBlock("oak_branch", () -> new BranchBlock(Blocks.OAK_LOG, VerdureBlocks.FALLEN_OAK_LEAVES.get(), BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> BIRCH_BRANCH = registerBlock("birch_branch", () -> new BranchBlock(Blocks.BIRCH_LOG, VerdureBlocks.FALLEN_OAK_LEAVES.get(), BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> BIRCH_BRANCH = registerBlock("birch_branch", () -> new BranchBlock(Blocks.BIRCH_LOG, VerdureBlocks.FALLEN_BIRCH_LEAVES.get(), BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).noCollission().noOcclusion().strength(1.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> WALL_ROOTS = BLOCKS.register("wall_roots", () -> new WallRootsBlock(BlockBehaviour.Properties.copy(Blocks.HANGING_ROOTS)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

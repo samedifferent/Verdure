@@ -53,7 +53,7 @@ public class ClientEventHandler {
                 VerdureBlocks.FALLEN_OAK_LEAVES.get(), VerdureBlocks.FALLEN_JUNGLE_LEAVES.get(), VerdureBlocks.FALLEN_ACACIA_LEAVES.get(), VerdureBlocks.FALLEN_DARK_OAK_LEAVES.get(),
                 VerdureBlocks.OAK_BRANCH.get());
         event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> FoliageColor.getEvergreenColor(), VerdureBlocks.FALLEN_SPRUCE_LEAVES.get());
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> FoliageColor.getBirchColor(), VerdureBlocks.FALLEN_BIRCH_LEAVES.get());
+        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> FoliageColor.getBirchColor(), VerdureBlocks.FALLEN_BIRCH_LEAVES.get(), VerdureBlocks.BIRCH_BRANCH.get());
     }
 
     @SubscribeEvent
@@ -61,8 +61,7 @@ public class ClientEventHandler {
         event.getItemColors().register((pStack, pTintIndex) -> {
             BlockState blockstate = ((BlockItem)pStack.getItem()).getBlock().defaultBlockState();
             return event.getBlockColors().getColor(blockstate, null, null, pTintIndex);
-        }, VerdureBlocks.FALLEN_OAK_LEAVES.get(), VerdureBlocks.FALLEN_JUNGLE_LEAVES.get(), VerdureBlocks.FALLEN_ACACIA_LEAVES.get(), VerdureBlocks.FALLEN_DARK_OAK_LEAVES.get(), VerdureBlocks.FALLEN_SPRUCE_LEAVES.get(), VerdureBlocks.FALLEN_BIRCH_LEAVES.get(),
-                VerdureBlocks.OAK_BRANCH.get());
+        }, VerdureBlocks.FALLEN_OAK_LEAVES.get(), VerdureBlocks.FALLEN_JUNGLE_LEAVES.get(), VerdureBlocks.FALLEN_ACACIA_LEAVES.get(), VerdureBlocks.FALLEN_DARK_OAK_LEAVES.get(), VerdureBlocks.FALLEN_SPRUCE_LEAVES.get(), VerdureBlocks.FALLEN_BIRCH_LEAVES.get());
     }
 
     @SubscribeEvent

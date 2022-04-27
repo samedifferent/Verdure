@@ -1,19 +1,50 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "verdure:block/birch_branch",
-      "y": 90
-    },
-    "facing=north": {
-      "model": "verdure:block/birch_branch"
-    },
-    "facing=south": {
-      "model": "verdure:block/birch_branch",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "verdure:block/birch_branch",
-      "y": 270
-    }
+    "facing=east,leaves=false": [
+      {
+        "model": "verdure:block/birch_branch",
+        "y": 90
+      }
+    ],
+    "facing=north,leaves=false": [
+      {
+        "model": "verdure:block/birch_branch"
+      }
+    ],
+    "facing=south,leaves=false": [
+      {
+        "model": "verdure:block/birch_branch",
+        "y": 180
+      }
+    ],
+    "facing=west,leaves=false": [
+      {
+        "model": "verdure:block/birch_branch",
+        "y": 270
+      }
+    ],
+    "facing=east,leaves=true": [
+      {
+        "model": "verdure:block/birch_branch_leaves",
+        "y": 90
+      }
+    ],
+    "facing=north,leaves=true": [
+      {
+        "model": "verdure:block/birch_branch_leaves"
+      }
+    ],
+    "facing=south,leaves=true": [
+      {
+        "model": "verdure:block/birch_branch_leaves",
+        "y": 180
+      }
+    ],
+    "facing=west,leaves=true": [
+      {
+        "model": "verdure:block/birch_branch_leaves",
+        "y": 270
+      }
+    ]
   }
 }

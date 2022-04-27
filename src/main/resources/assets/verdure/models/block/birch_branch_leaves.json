@@ -1,0 +1,7 @@
+{
+  "parent": "verdure:block/branch_leaves",
+  "textures": {
+    "branch": "verdure:block/birch_branch",
+    "leaves": "verdure:block/birch_branch_leaves"
+  }
+}
