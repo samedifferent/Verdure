@@ -1,6 +1,6 @@
 {
   "variants": {
-    "": [
+    "snowy=false": [
       {
         "model": "verdure:block/humus"
       },
@@ -16,6 +16,9 @@
         "model": "verdure:block/humus",
         "y": 270
       }
-    ]
+    ],
+    "snowy=true": {
+      "model": "minecraft:block/grass_block_snow"
+    }
   }
 }

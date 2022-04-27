@@ -53,112 +53,102 @@ public class CommonEventHandler {
                 case FOREST -> {
                     if (location.equals(Biomes.BIRCH_FOREST.location())) {
                         replaceTrees(event, location, VegetationPlacements.TREES_BIRCH, VerdurePlacedFeatures.TREES_BIRCH);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.BIRCH_DAISIES);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
                     }
                     if (location.equals(Biomes.OLD_GROWTH_BIRCH_FOREST.location())) {
                         replaceTrees(event, location, VegetationPlacements.BIRCH_TALL, VerdurePlacedFeatures.BIRCH_TALL);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.BIRCH_DAISIES);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
                     }
                     if (location.equals(Biomes.FOREST.location())) {
                         replaceTrees(event, location, VegetationPlacements.TREES_BIRCH_AND_OAK, VerdurePlacedFeatures.TREES_BIRCH_AND_OAK);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.OAK_DAISIES);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.BIRCH_DAISIES);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.OAK_HOLLOW);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.FANCY_OAK_HOLLOW);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_DAISIES);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FANCY_OAK_HOLLOW);
                         event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(VerdureEntityTypes.BIRD.get(), 12, 2, 3));
                     }
                     if (location.equals(Biomes.FLOWER_FOREST.location())) {
                         replaceTrees(event, location, VegetationPlacements.TREES_FLOWER_FOREST, VerdurePlacedFeatures.TREES_FLOWER_FOREST);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.OAK_HOLLOW);
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.FANCY_OAK_HOLLOW);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_WILDFLOWERS);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FANCY_OAK_HOLLOW);
                     }
                     if (VerdureConfig.GENERATE_DARK_OAK_HUMUS.get()) {
                         replaceTrees(event, Biomes.DARK_FOREST.location(), VegetationPlacements.DARK_FOREST_VEGETATION, VerdurePlacedFeatures.DARK_FOREST_VEGETATION);
                     }
-                    addBoulder(builder, VerdurePlacedFeatures.BOULDER_STONE);
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_STONE);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                     addGrassyAreaFeatures(builder);
                 }
                 case PLAINS -> {
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
                     addGrassyAreaFeatures(builder);
                 }
                 case RIVER -> {
-                    addBoulder(builder, VerdurePlacedFeatures.BOULDER_SLATE);
+                    addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE);
                 }
                 case JUNGLE -> {
                     replaceTrees(event, Biomes.SPARSE_JUNGLE.location(), VegetationPlacements.TREES_SPARSE_JUNGLE, VerdurePlacedFeatures.TREES_SPARSE_JUNGLE);
                     replaceTrees(event, Biomes.JUNGLE.location(), VegetationPlacements.TREES_JUNGLE, VerdurePlacedFeatures.TREES_JUNGLE);
                     replaceTrees(event, Biomes.BAMBOO_JUNGLE.location(), VegetationPlacements.TREES_JUNGLE, VerdurePlacedFeatures.TREES_JUNGLE);
-                    addBoulder(builder, VerdurePlacedFeatures.BOULDER_SLATE);
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG);
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.HUMUS_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_SLATE);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.HUMUS_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
                     addGrassyAreaFeatures(builder);
                 }
                 case TAIGA -> {
                     if (location.equals(Biomes.TAIGA.location()) || location.equals(Biomes.SNOWY_TAIGA.location())) {
-                        addBoulder(builder, VerdurePlacedFeatures.BOULDER_DIORITE);
+                        addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_DIORITE);
                     }
                     replaceTrees(event, Biomes.TAIGA.location(), VegetationPlacements.TREES_TAIGA, VerdurePlacedFeatures.TREES_TAIGA);
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                     addGrassyAreaFeatures(builder);
                 }
                 case SAVANNA -> {
                     replaceTrees(event, Biomes.SAVANNA.location(), VegetationPlacements.TREES_SAVANNA, VerdurePlacedFeatures.TREES_SAVANNA);
                     replaceTrees(event, Biomes.WINDSWEPT_SAVANNA.location(), VegetationPlacements.TREES_WINDSWEPT_SAVANNA, VerdurePlacedFeatures.TREES_WINDSWEPT_SAVANNA);
-                    addBoulder(builder, VerdurePlacedFeatures.BOULDER_GRANITE);
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_CLOVER);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.PEBBLES);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.ROCK);
+                    addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_GRANITE);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_SAVANNA);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PEBBLES);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.ROCK);
                 }
                 case BEACH -> {
-                    addBoulder(builder, VerdurePlacedFeatures.BOULDER_ANDESITE);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.PEBBLES);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.ROCK);
+                    addFeature(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, VerdurePlacedFeatures.BOULDER_ANDESITE);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PEBBLES);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.ROCK);
                 }
                 case SWAMP -> {
-                    addFeatureIfPresent(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
-                    addVegetalDecoration(builder, VerdurePlacedFeatures.MUSHROOM_SHELF);
+                    addFeature(builder, GenerationStep.Decoration.UNDERGROUND_ORES, VerdurePlacedFeatures.SMOOTH_DIRT_PATCH_SWAMP);
+                    addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.MUSHROOM_SHELF);
                     addGrassyAreaFeatures(builder);
                 }
                 case NETHER -> {
                     if (location.equals(Biomes.WARPED_FOREST.location()) || location.equals(Biomes.CRIMSON_FOREST.location())) {
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FALLEN_LOG_NETHER);
                     }
                 }
                 case UNDERGROUND -> {
                     if (location.equals(Biomes.LUSH_CAVES.location())) {
-                        addVegetalDecoration(builder, VerdurePlacedFeatures.HANGING_MOSS);
+                        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.HANGING_MOSS);
                     }
                 }
             }
         }
-        addVegetalDecoration(builder, VerdurePlacedFeatures.UNDERGROUND_MUSHROOM_SHELF);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.UNDERGROUND_MUSHROOM_SHELF);
     }
 
-    private static void addFeatureIfPresent(BiomeGenerationSettingsBuilder builder, GenerationStep.Decoration decorationStage, RegistryObject<PlacedFeature> feature) {
-        if (feature.getHolder().isPresent()) {
-            builder.addFeature(decorationStage, feature.getHolder().get());
-        }
-    }
-
-    private static void addVegetalDecoration(BiomeGenerationSettingsBuilder builder, RegistryObject<PlacedFeature> feature) {
-        addFeatureIfPresent(builder, GenerationStep.Decoration.VEGETAL_DECORATION, feature);
-    }
-
-    private static void addBoulder(BiomeGenerationSettingsBuilder builder, RegistryObject<PlacedFeature> feature) {
-        addFeatureIfPresent(builder, GenerationStep.Decoration.LOCAL_MODIFICATIONS, feature);
+    private static void addFeature(BiomeGenerationSettingsBuilder builder, GenerationStep.Decoration decorationStage, RegistryObject<PlacedFeature> feature) {
+        builder.addFeature(decorationStage, feature.getHolder().orElseThrow());
     }
 
     private static void replaceTrees(BiomeLoadingEvent event, ResourceLocation biomeLocation, Holder<PlacedFeature> originalFeature, RegistryObject<PlacedFeature> replacementFeature) {
@@ -176,12 +166,12 @@ public class CommonEventHandler {
     }
 
     private static void addGrassyAreaFeatures(BiomeGenerationSettingsBuilder builder) {
-        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_CLOVER);
-        addVegetalDecoration(builder, VerdurePlacedFeatures.PEBBLES);
-        addVegetalDecoration(builder, VerdurePlacedFeatures.ROCK);
-        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_DAISIES);
-        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_DAISIES_BLUE);
-        addVegetalDecoration(builder, VerdurePlacedFeatures.PATCH_DAISIES_PINK);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_CLOVER);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PEBBLES);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.ROCK);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES_BLUE);
+        addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.PATCH_DAISIES_PINK);
     }
 
     @SubscribeEvent
