@@ -1,7 +1,6 @@
 package samebutdifferent.verdure.event;
 
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -13,9 +12,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import samebutdifferent.verdure.Verdure;
 import samebutdifferent.verdure.entity.Bird;
 import samebutdifferent.verdure.registry.VerdureBlocks;
-import samebutdifferent.verdure.registry.VerdureEntityTypes;
-
-import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = Verdure.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventHandler {
@@ -24,16 +20,6 @@ public class ModEventHandler {
         event.enqueueWork(() -> {
             registerCompostables();
         });
-    }
-
-    @SubscribeEvent
-    public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(VerdureEntityTypes.BIRD.get(), Bird.createAttributes().build());
-    }
-
-    @SubscribeEvent
-    public static void onComplete(FMLLoadCompleteEvent event) {
-        SpawnPlacements.register(VerdureEntityTypes.BIRD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, Bird::checkBirdSpawnRules);
     }
 
     private static void registerCompostables() {

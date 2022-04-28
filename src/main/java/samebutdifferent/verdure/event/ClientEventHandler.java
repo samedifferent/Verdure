@@ -1,25 +1,19 @@
 package samebutdifferent.verdure.event;
 
-import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import samebutdifferent.verdure.Verdure;
-import samebutdifferent.verdure.client.model.BirdModel;
-import samebutdifferent.verdure.client.renderer.BirdRenderer;
 import samebutdifferent.verdure.registry.VerdureBlocks;
-import samebutdifferent.verdure.registry.VerdureEntityTypes;
 
 @Mod.EventBusSubscriber(modid = Verdure.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {
@@ -62,15 +56,5 @@ public class ClientEventHandler {
             BlockState blockstate = ((BlockItem)pStack.getItem()).getBlock().defaultBlockState();
             return event.getBlockColors().getColor(blockstate, null, null, pTintIndex);
         }, VerdureBlocks.FALLEN_OAK_LEAVES.get(), VerdureBlocks.FALLEN_JUNGLE_LEAVES.get(), VerdureBlocks.FALLEN_ACACIA_LEAVES.get(), VerdureBlocks.FALLEN_DARK_OAK_LEAVES.get(), VerdureBlocks.FALLEN_SPRUCE_LEAVES.get(), VerdureBlocks.FALLEN_BIRCH_LEAVES.get());
-    }
-
-    @SubscribeEvent
-    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(VerdureEntityTypes.BIRD.get(), BirdRenderer::new);
-    }
-
-    @SubscribeEvent
-    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(BirdModel.LAYER_LOCATION, BirdModel::createBodyLayer);
     }
 }

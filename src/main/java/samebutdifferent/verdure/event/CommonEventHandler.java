@@ -36,7 +36,6 @@ import samebutdifferent.verdure.Verdure;
 import samebutdifferent.verdure.block.WallRootsBlock;
 import samebutdifferent.verdure.registry.VerdureBlocks;
 import samebutdifferent.verdure.registry.VerdureConfig;
-import samebutdifferent.verdure.registry.VerdureEntityTypes;
 import samebutdifferent.verdure.registry.VerdurePlacedFeatures;
 import samebutdifferent.verdure.util.CodecUtils;
 
@@ -67,7 +66,6 @@ public class CommonEventHandler {
                         addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.BIRCH_DAISIES);
                         addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.OAK_HOLLOW);
                         addFeature(builder, GenerationStep.Decoration.VEGETAL_DECORATION, VerdurePlacedFeatures.FANCY_OAK_HOLLOW);
-                        event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(VerdureEntityTypes.BIRD.get(), 12, 2, 3));
                     }
                     if (location.equals(Biomes.FLOWER_FOREST.location())) {
                         replaceTrees(event, location, VegetationPlacements.TREES_FLOWER_FOREST, VerdurePlacedFeatures.TREES_FLOWER_FOREST);
