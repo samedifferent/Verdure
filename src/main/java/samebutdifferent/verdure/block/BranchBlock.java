@@ -162,4 +162,14 @@ public class BranchBlock extends HorizontalDirectionalBlock implements SimpleWat
             return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
         }
     }
+
+    @Override
+    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return true;
+    }
+
+    @Override
+    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return 100;
+    }
 }
