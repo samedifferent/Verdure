@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -38,7 +39,7 @@ public class FallenLeavesDecorator extends TreeDecorator {
                 while (pLevel.isStateAtPosition(mutable.below(), blockState -> !blockState.getMaterial().isSolid())) {
                     mutable.move(Direction.DOWN);
                 }
-                if (pLevel.isStateAtPosition(mutable, blockState -> blockState.getMaterial().isReplaceable())) {
+                if (Feature.isAir(pLevel, mutable)) {
                     if (pRandom.nextBoolean()) {
                         pBlockSetter.accept(mutable, state);
                     }
