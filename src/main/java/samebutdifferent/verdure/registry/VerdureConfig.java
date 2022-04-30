@@ -13,14 +13,14 @@ public class VerdureConfig {
     public static final ForgeConfigSpec.IntValue HUMUS_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue CLOVER_PATCH_RARITY;
     public static final ForgeConfigSpec.IntValue DAISIES_PATCH_RARITY;
+    public static final ForgeConfigSpec.IntValue PEBBLES_RARITY;
+    public static final ForgeConfigSpec.IntValue ROCK_RARITY;
     public static final ForgeConfigSpec.IntValue FALLEN_LOG_RARITY;
     public static final ForgeConfigSpec.IntValue DAISY_TREE_RARITY;
     public static final ForgeConfigSpec.IntValue OAK_HOLLOW_RARITY;
 
     // COUNT-BASED FEATURE PLACEMENTS
     public static final ForgeConfigSpec.IntValue FALLEN_LOG_NETHER_COUNT;
-    public static final ForgeConfigSpec.IntValue PEBBLES_RARITY;
-    public static final ForgeConfigSpec.IntValue ROCK_RARITY;
     public static final ForgeConfigSpec.IntValue MUSHROOM_SHELF_SURFACE_COUNT;
     public static final ForgeConfigSpec.IntValue MUSHROOM_SHELF_UNDERGROUND_COUNT_MIN;
     public static final ForgeConfigSpec.IntValue MUSHROOM_SHELF_UNDERGROUND_COUNT_MAX;

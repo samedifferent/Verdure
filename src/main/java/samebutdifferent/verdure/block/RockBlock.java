@@ -20,7 +20,7 @@ public class RockBlock extends Block {
 
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return pLevel.getBlockState(pPos.below()).getMaterial().isSolid();
+        return pLevel.getBlockState(pPos.below()).isFaceSturdy(pLevel, pPos.below(), Direction.UP);
     }
 
     @Override
