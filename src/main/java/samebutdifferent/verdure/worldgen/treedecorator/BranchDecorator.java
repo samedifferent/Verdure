@@ -37,20 +37,16 @@ public class BranchDecorator extends TreeDecorator {
             List<BlockPos> exposedLogs = pLogPositions.stream().filter(blockPos -> blockPos.getY() < lowestLeafY).toList();
             Direction zRand = pRandom.nextBoolean() ? Direction.NORTH : Direction.SOUTH;
             Direction xRand = pRandom.nextBoolean() ? Direction.EAST : Direction.WEST;
-            BlockPos posFirst = exposedLogs.get(exposedLogs.size() - 1);
-            BlockPos posSecond = exposedLogs.get(exposedLogs.size() - 2);
-            if (exposedLogs.size() < 3) {
-            } else if (exposedLogs.size() < 4) {
-                Direction direction = pRandom.nextBoolean() ? xRand : zRand;
-                if (Feature.isAir(pLevel, posFirst.relative(direction))) {
-                    pBlockSetter.accept(posFirst.relative(direction), this.state.setValue(HorizontalDirectionalBlock.FACING, direction));
-                }
-            } else {
+            if (exposedLogs.size() > 2) {
+                BlockPos posFirst = exposedLogs.get(exposedLogs.size() - 1);
                 if (Feature.isAir(pLevel, posFirst.relative(xRand))) {
                     pBlockSetter.accept(posFirst.relative(xRand), this.state.setValue(HorizontalDirectionalBlock.FACING, xRand));
                 }
-                if (Feature.isAir(pLevel, posSecond.relative(zRand))) {
-                    pBlockSetter.accept(posSecond.relative(zRand), this.state.setValue(HorizontalDirectionalBlock.FACING, zRand));
+                if (exposedLogs.size() > 3) {
+                    BlockPos posSecond = exposedLogs.get(exposedLogs.size() - 2);
+                    if (Feature.isAir(pLevel, posSecond.relative(zRand))) {
+                        pBlockSetter.accept(posSecond.relative(zRand), this.state.setValue(HorizontalDirectionalBlock.FACING, zRand));
+                    }
                 }
             }
         }
