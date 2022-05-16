@@ -5,7 +5,6 @@
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
     "DarkOakTreeGrowerMixin",
-    "MushroomBlockMixin",
     "TrunkPlacerMixin"
   ],
   "client": [],

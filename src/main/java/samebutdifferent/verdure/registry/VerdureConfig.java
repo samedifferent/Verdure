@@ -27,9 +27,6 @@ public class VerdureConfig {
     public static final ForgeConfigSpec.DoubleValue FALLEN_LEAVES_CHANCE;
     public static final ForgeConfigSpec.BooleanValue GENERATE_DARK_OAK_HUMUS;
 
-    // GAMEPLAY SETTINGS
-    public static final ForgeConfigSpec.BooleanValue REMOVE_MUSHROOM_LIGHT_LEVEL;
-
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
         
@@ -52,10 +49,6 @@ public class VerdureConfig {
         GENERATE_TREE_BRANCHES = COMMON_BUILDER.comment("Trees in forests will spawn with 2D branch blocks.").define("generateTreeBranches", true);
         FALLEN_LEAVES_CHANCE = COMMON_BUILDER.comment("Chance that fallen leaves will generate under a tree (in percentage). Set to 0 to disable this.").defineInRange("fallenLeavesChance", 0.1, 0.0, 1.0);
         GENERATE_DARK_OAK_HUMUS = COMMON_BUILDER.comment("Dark Oak trees will spawn with a patch of humus underneath.").define("generateDarkOakHumus", true);
-        COMMON_BUILDER.pop();
-
-        COMMON_BUILDER.push("Gameplay Settings");
-        REMOVE_MUSHROOM_LIGHT_LEVEL = COMMON_BUILDER.comment("Mushrooms can be placed and survive regardless of light level.").define("removeMushroomLightLevel", true);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();
